@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pokemon{% endblock %}
+
+{% block body %}
+    <h1>Pokemon</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idespece</th>
+                <td>{{ pokemon.idespece }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ espece.nom }}</td>
+            </tr>
+            <tr>
+                <th>Surnom</th>
+                <td>{{ pokemon.surnom }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+            {% for row in type %}
+                    <td>{{ row['type'] }}</td>
+            {% else %}
+                    <td colspan="2">no records found</td>
+            {% endfor %}
+            </tr>
+            <tr>
+                <th>Courbe XP</th>
+                <td>{{ espece.courbeXP }}</td>
+            </tr>
+            <tr>
+                <th>XP</th>
+                <td>{{ pokemon.xp }}</td>
+            </tr>
+            <tr>
+                <th>Niveau</th>
+                <td>{{ pokemon.niveau }}</td>
+            </tr>
+            <tr>
+                <th>Evolution</th>
+                {% if espece.evolution == 'o' %}
+                    <td>Oui</td>
+                {% else %}
+                    <td>Non</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ pokemon.sexe }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ pokemon.prix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('pokemon_index') }}">Back to list</a>
+
+    <a href="{{ path('pokemon_edit', {'id': pokemon.id}) }}">Edit</a>
+
+    {{ include('pokemon/_delete_form.html.twig') }}
+{% endblock %}

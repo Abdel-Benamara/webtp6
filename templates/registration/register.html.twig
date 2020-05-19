@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1>Register</h1>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword) }}
+
+    <label for="starter">Choisis ton tout premier pokémon : </label>
+    <div>
+        <input type="radio" name="starter" id="Bulbizarre" value="1" checked>
+        <label for="Bulbizarre" style="width : 25%;">Bulbizarre </label>
+
+        <input type="radio" name="starter" id="Salamèche" value="4">
+        <label for="Salamèche" style="width : 25%;">Salamèche </label>
+
+        <input type="radio" name="starter" id="Carapuce" value="7">
+        <label for="Carapuce" style="width : 25%;">Carapuce </label>
+    </div>
+    <label for="surnom">Donne lui un surnom : </label>
+    <input type="text" name="surnom" id="surnom" maxlength="25" required/>
+
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Register</button>
+
+    {{ form_end(registrationForm) }}
+{% endblock %}
