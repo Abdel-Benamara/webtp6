@@ -53,6 +53,7 @@ class RegistrationController extends AbstractController
             $pokemon->setXp(0);
             $pokemon->setSexe('mâle');
             $pokemon->setPrix(0);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($pokemon);
             $entityManager->flush();

@@ -99,31 +99,31 @@ class __TwigTemplate_466e68d844c5e5d8f18f49317c6f8d394c4ed7791786f4ab1ae7dca78fc
         // line 10
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 10, $this->source); })()), "plainPassword", [], "any", false, false, false, 10), 'row');
         echo "
-
-    <label for=\"starter\">Choisis ton tout premier pokémon : </label>
-    <div>
-        <input type=\"radio\" name=\"starter\" id=\"Bulbizarre\" value=\"1\" checked>
-        <label for=\"Bulbizarre\" style=\"width : 25%;\">Bulbizarre </label>
-
-        <input type=\"radio\" name=\"starter\" id=\"Salamèche\" value=\"4\">
-        <label for=\"Salamèche\" style=\"width : 25%;\">Salamèche </label>
-
-        <input type=\"radio\" name=\"starter\" id=\"Carapuce\" value=\"7\">
-        <label for=\"Carapuce\" style=\"width : 25%;\">Carapuce </label>
-    </div>
-    <label for=\"surnom\">Donne lui un surnom : </label>
-    <input type=\"text\" name=\"surnom\" id=\"surnom\" maxlength=\"25\" required/>
-
         ";
-        // line 26
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 26, $this->source); })()), "agreeTerms", [], "any", false, false, false, 26), 'row');
+        // line 11
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 11, $this->source); })()), "starter", [], "any", false, false, false, 11), 'row');
+        echo "
+        ";
+        // line 12
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 12, $this->source); })()), "surnom", [], "any", false, false, false, 12), 'row');
+        echo "
+        ";
+        // line 13
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 13, $this->source); })()), "agreeTerms", [], "any", false, false, false, 13), 'row');
         echo "
 
-        <button type=\"submit\" class=\"btn\">Register</button>
+        <button class=\"btn btn-lg btn-primary\" type=\"submit\">Register</button>
+
+        <button class=\"btn btn-lg btn-primary\" type=\"submit\">
+            <a href=\"";
+        // line 18
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+        echo "\">I already have an account</a>
+        </button>
 
     ";
-        // line 30
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 30, $this->source); })()), 'form_end');
+        // line 21
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 21, $this->source); })()), 'form_end');
         echo "
 ";
         
@@ -146,7 +146,7 @@ class __TwigTemplate_466e68d844c5e5d8f18f49317c6f8d394c4ed7791786f4ab1ae7dca78fc
 
     public function getDebugInfo()
     {
-        return array (  126 => 30,  119 => 26,  100 => 10,  96 => 9,  92 => 8,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  126 => 21,  120 => 18,  112 => 13,  108 => 12,  104 => 11,  100 => 10,  96 => 9,  92 => 8,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -161,24 +161,15 @@ class __TwigTemplate_466e68d844c5e5d8f18f49317c6f8d394c4ed7791786f4ab1ae7dca78fc
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword) }}
-
-    <label for=\"starter\">Choisis ton tout premier pokémon : </label>
-    <div>
-        <input type=\"radio\" name=\"starter\" id=\"Bulbizarre\" value=\"1\" checked>
-        <label for=\"Bulbizarre\" style=\"width : 25%;\">Bulbizarre </label>
-
-        <input type=\"radio\" name=\"starter\" id=\"Salamèche\" value=\"4\">
-        <label for=\"Salamèche\" style=\"width : 25%;\">Salamèche </label>
-
-        <input type=\"radio\" name=\"starter\" id=\"Carapuce\" value=\"7\">
-        <label for=\"Carapuce\" style=\"width : 25%;\">Carapuce </label>
-    </div>
-    <label for=\"surnom\">Donne lui un surnom : </label>
-    <input type=\"text\" name=\"surnom\" id=\"surnom\" maxlength=\"25\" required/>
-
+        {{ form_row(registrationForm.starter) }}
+        {{ form_row(registrationForm.surnom) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type=\"submit\" class=\"btn\">Register</button>
+        <button class=\"btn btn-lg btn-primary\" type=\"submit\">Register</button>
+
+        <button class=\"btn btn-lg btn-primary\" type=\"submit\">
+            <a href=\"{{ path('app_login') }}\">I already have an account</a>
+        </button>
 
     {{ form_end(registrationForm) }}
 {% endblock %}

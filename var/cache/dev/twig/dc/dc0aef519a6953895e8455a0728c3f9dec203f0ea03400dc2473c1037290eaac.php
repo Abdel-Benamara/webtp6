@@ -196,7 +196,7 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
     <a href=\"";
         // line 63
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 63, $this->source); })()), "id", [], "any", false, false, false, 63)]), "html", null, true);
-        echo "\"> Edit</a>
+        echo "\">Edit</a>
 
     ";
         // line 65
@@ -290,7 +290,7 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
 
     <a href=\"{{ path('pokemon_index') }}\">Back to list</a>
 
-    <a href=\"{{ path('pokemon_edit', {'id': pokemon.id}) }}\"> Edit</a>
+    <a href=\"{{ path('pokemon_edit', {'id': pokemon.id}) }}\">Edit</a>
 
     {{ include('pokemon/_delete_form.html.twig') }}
 {% endblock %}
