@@ -46,13 +46,16 @@ class RegistrationController extends AbstractController
             // do anything else you need here, like send an email
 
             $pokemon = new Pokemon();
-            $pokemon->setIdespece($form->get('starter'));
-            $pokemon->setSurnom($form->get('surnom'));
-            $pokemon->setIddresseur($this->getUser()->getId());
+            $pokemon->setIdespece($form->get('starter')->getData());
+            $pokemon->setSurnom($form->get('surnom')->getData());
+            $pokemon->setIddresseur($user->getId());
             $pokemon->setNiveau(1);
             $pokemon->setXp(0);
             $pokemon->setSexe('mâle');
             $pokemon->setPrix(0);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($pokemon);
+            $entityManager->flush();
 
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,

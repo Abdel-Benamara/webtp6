@@ -3,9 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Dresseur;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -43,6 +47,21 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+
+            ->add('starter', ChoiceType::class, array(
+                    'mapped' => false,
+                    'choices' => array(
+                        "Bulbizarre" => 1,
+                        "Salameche" => 4,
+                        "Carapuce" => 7,
+                    ),
+                    'expanded' => false,
+                )
+            )
+
+            ->add('surnom', TextareaType::class, array(
+                'mapped' => false,
+            ))
         ;
     }
 
