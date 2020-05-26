@@ -92,7 +92,7 @@ class __TwigTemplate_150e866ef7c899fbdd244cd75560290d2c32490099c060a5473fdf565dd
         echo twig_include($this->env, $context, "pokemon/_form.html.twig", ["button_label" => "Update"]);
         echo "
 
-    <a href=\"";
+    <a class=\"btn btn-primary\" href=\"";
         // line 10
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_index");
         echo "\">back to list</a>
@@ -136,7 +136,7 @@ class __TwigTemplate_150e866ef7c899fbdd244cd75560290d2c32490099c060a5473fdf565dd
 
     {{ include('pokemon/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href=\"{{ path('pokemon_index') }}\">back to list</a>
+    <a class=\"btn btn-primary\" href=\"{{ path('pokemon_index') }}\">back to list</a>
 
     {{ include('pokemon/_delete_form.html.twig') }}
 {% endblock %}

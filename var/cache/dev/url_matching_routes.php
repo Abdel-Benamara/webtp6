@@ -46,8 +46,11 @@ return [
                 .')'
                 .'|/pokemon/([^/]++)(?'
                     .'|(*:240)'
-                    .'|/edit(*:253)'
-                    .'|(*:261)'
+                    .'|/(?'
+                        .'|training(*:260)'
+                        .'|edit(*:272)'
+                    .')'
+                    .'|(*:281)'
                 .')'
             .')/?$}sDu',
     ],
@@ -63,8 +66,9 @@ return [
         203 => [[['_route' => 'dresseur_edit', '_controller' => 'App\\Controller\\DresseurController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         211 => [[['_route' => 'dresseur_delete', '_controller' => 'App\\Controller\\DresseurController::delete'], ['id'], ['DELETE' => 0], null, false, true, null]],
         240 => [[['_route' => 'pokemon_show', '_controller' => 'App\\Controller\\PokemonController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        253 => [[['_route' => 'pokemon_edit', '_controller' => 'App\\Controller\\PokemonController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        261 => [
+        260 => [[['_route' => 'pokemon_training', '_controller' => 'App\\Controller\\PokemonController::training'], ['id'], ['GET' => 0], null, false, false, null]],
+        272 => [[['_route' => 'pokemon_edit', '_controller' => 'App\\Controller\\PokemonController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        281 => [
             [['_route' => 'pokemon_delete', '_controller' => 'App\\Controller\\PokemonController::delete'], ['id'], ['DELETE' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

@@ -134,6 +134,13 @@ class Pokemon
         return $this->prix;
     }
 
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function setIddresseur(int $iddresseur): self
     {
         $this->iddresseur = $iddresseur;

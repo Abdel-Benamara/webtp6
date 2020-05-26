@@ -85,6 +85,21 @@ class PokemonController extends AbstractController
     }
 
     /**
+     * @Route("/{id}/training", name="pokemon_training", methods={"GET"})
+     * @param Pokemon $pokemon
+     * @param PokemonRepository $pokemonRepository
+     * @param DresseurRepository $dresseurRepository
+     * @return Response
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function training(Pokemon $pokemon, PokemonRepository $pokemonRepository, DresseurRepository $dresseurRepository): Response
+    {
+        $pokemonRepository->getTrained($pokemon);
+
+        return $this->index($dresseurRepository);
+    }
+
+    /**
      * @Route("/{id}/edit", name="pokemon_edit", methods={"GET","POST"})
      * @param Request $request
      * @param Pokemon $pokemon

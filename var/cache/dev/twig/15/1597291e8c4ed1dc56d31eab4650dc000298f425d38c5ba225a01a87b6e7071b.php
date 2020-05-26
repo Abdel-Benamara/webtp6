@@ -122,17 +122,18 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
             // line 24
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_show", ["id" => twig_get_attribute($this->env, $this->source, $context["pokemon"], "id", [], "any", false, false, false, 24)]), "html", null, true);
             echo "\">Show</a>
+                    -
                     <a href=\"";
-            // line 25
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["pokemon"], "id", [], "any", false, false, false, 25)]), "html", null, true);
-            echo "\"> Edit</a>
+            // line 26
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["pokemon"], "id", [], "any", false, false, false, 26)]), "html", null, true);
+            echo "\">Edit</a>
                 </td>
             </tr>
         ";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 29
+            // line 30
             echo "            <tr>
                 <td colspan=\"8\">no records found</td>
             </tr>
@@ -141,7 +142,7 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pokemon'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 33
+        // line 34
         echo "        </tbody>
     </table>
 
@@ -166,7 +167,7 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
 
     public function getDebugInfo()
     {
-        return array (  145 => 33,  136 => 29,  127 => 25,  123 => 24,  118 => 22,  114 => 21,  110 => 20,  107 => 19,  102 => 18,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  146 => 34,  137 => 30,  128 => 26,  123 => 24,  118 => 22,  114 => 21,  110 => 20,  107 => 19,  102 => 18,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -195,7 +196,8 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
                 <td>{{ pokemon.surnom }}</td>
                 <td>
                     <a href=\"{{ path('pokemon_show', {'id': pokemon.id}) }}\">Show</a>
-                    <a href=\"{{ path('pokemon_edit', {'id': pokemon.id}) }}\"> Edit</a>
+                    -
+                    <a href=\"{{ path('pokemon_edit', {'id': pokemon.id}) }}\">Edit</a>
                 </td>
             </tr>
         {% else %}
