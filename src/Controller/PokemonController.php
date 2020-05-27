@@ -95,8 +95,10 @@ class PokemonController extends AbstractController
     public function training(Pokemon $pokemon, PokemonRepository $pokemonRepository, DresseurRepository $dresseurRepository): Response
     {
         $pokemon->getTrained($pokemonRepository);
+        
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->flush();
+
         return $this->index($dresseurRepository);
     }
 

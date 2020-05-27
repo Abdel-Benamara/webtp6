@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PokemonRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * Pokemon
@@ -72,6 +73,14 @@ class Pokemon
     private $prix;
 
     /**
+     * @var Date
+     *
+     * @ORM\Column(name="action", type="date", nullable=true)
+     */
+    private $action;
+
+
+    /**
      * @return int
      */
     public function getId(): ?int
@@ -135,6 +144,14 @@ class Pokemon
         return $this->prix;
     }
 
+    /**
+     * @return Date
+     */
+    public function getAction(): Date
+    {
+        return $this->action;
+    }
+
     public function setId(int $id): self
     {
         $this->id = $id;
@@ -187,6 +204,13 @@ class Pokemon
     public function setSurnom(string $surnom): self
     {
         $this->surnom = $surnom;
+
+        return $this;
+    }
+
+    public function setAction(Date $action): self
+    {
+        $this->action = $action;
 
         return $this;
     }
