@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\PokemonRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -188,6 +189,46 @@ class Pokemon
         $this->surnom = $surnom;
 
         return $this;
+    }
+
+    public function getTrained(PokemonRepository $pokemonRepository):void {
+        $results = random_int(10, 30) + $this->xp;
+        switch ($pokemonRepository->getEspece($this->id)['courbeXP']){
+            case 'R':
+                $exp = 0.8 * (pow($this->niveau, 3));
+                while ($results > $exp){
+                    $this->niveau = $this->niveau + 1;
+                    $results = $results - $exp;
+                    $exp = 0.8 * (pow($this->niveau, 3));
+                }
+                break;
+            case 'M':
+                $exp = pow($this->niveau, 3);
+                while ($results > $exp){
+                    $this->niveau = $this->niveau + 1;
+                    $results = $results - $exp;
+                    $exp = pow($this->niveau, 3);
+                }
+                break;
+            case 'P':
+                $exp = 1.2 * (pow($this->niveau, 3)) - 15 * (pow($this->niveau, 2)) + 100 * $this->niveau - 140;
+                while ($results > $exp){
+                    $this->niveau = $this->niveau + 1;
+                    $results = $results - $exp;
+                    $exp = 1.2 * (pow($this->niveau, 3)) - 15 * (pow($this->niveau, 2)) + 100 * $this->niveau - 140;
+                }
+                break;
+            case 'L':
+                $exp = 1.25 * (pow($this->niveau, 3));
+                while ($results > $exp){
+                    $this->niveau = $this->niveau + 1;
+                    $results = $results - $exp;
+                    $exp = 1.25 * (pow($this->niveau, 3));
+                }
+                break;
+        }
+        $this->xp = round($results, 0, PHP_ROUND_HALF_UP);
+
     }
 
 }
