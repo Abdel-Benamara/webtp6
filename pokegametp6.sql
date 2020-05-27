@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  mer. 27 mai 2020 à 10:50
+-- Généré le :  mer. 27 mai 2020 à 14:38
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.4.2
 
@@ -247,6 +247,46 @@ INSERT INTO `bindPokeType` (`idPokemon`, `idType`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `capture`
+--
+
+CREATE TABLE `capture` (
+  `idLieu` int(11) NOT NULL,
+  `idType` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `capture`
+--
+
+INSERT INTO `capture` (`idLieu`, `idType`) VALUES
+(1, 1),
+(1, 3),
+(1, 8),
+(1, 10),
+(1, 14),
+(2, 6),
+(2, 7),
+(2, 10),
+(2, 11),
+(2, 15),
+(2, 18),
+(3, 2),
+(3, 5),
+(3, 10),
+(3, 13),
+(4, 9),
+(4, 10),
+(4, 16),
+(4, 18),
+(5, 3),
+(5, 4),
+(5, 10),
+(5, 12);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `dresseur`
 --
 
@@ -440,6 +480,28 @@ INSERT INTO `especePokemon` (`id`, `nom`, `courbeXP`, `evolution`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `lieu`
+--
+
+CREATE TABLE `lieu` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `lieu`
+--
+
+INSERT INTO `lieu` (`id`, `nom`) VALUES
+(1, 'montagne'),
+(2, 'prairie'),
+(3, 'ville'),
+(4, 'foret'),
+(5, 'plage');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `migration_versions`
 --
 
@@ -482,8 +544,8 @@ CREATE TABLE `pokemon` (
 
 INSERT INTO `pokemon` (`id`, `surnom`, `idDresseur`, `idEspece`, `xp`, `niveau`, `sexe`, `prix`, `action`) VALUES
 (1, 'Lulu', 0, 1, 0, 1, 'mâle', 0, NULL),
-(2, '', 1, 4, 171, 8, 'mâle', 0, NULL),
-(3, 'Toto', 2, 7, 33, 5, 'mâle', 0, NULL);
+(2, '', 1, 4, 227, 8, 'mâle', 0, NULL),
+(3, 'Toto', 2, 7, 48, 5, 'mâle', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -533,6 +595,14 @@ ALTER TABLE `bindPokeType`
   ADD KEY `idType` (`idType`);
 
 --
+-- Index pour la table `capture`
+--
+ALTER TABLE `capture`
+  ADD PRIMARY KEY (`idLieu`,`idType`),
+  ADD KEY `idLieu` (`idLieu`) USING BTREE,
+  ADD KEY `idType` (`idType`);
+
+--
 -- Index pour la table `dresseur`
 --
 ALTER TABLE `dresseur`
@@ -546,6 +616,12 @@ ALTER TABLE `especePokemon`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `lieu`
+--
+ALTER TABLE `lieu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `migration_versions`
 --
 ALTER TABLE `migration_versions`
@@ -555,7 +631,9 @@ ALTER TABLE `migration_versions`
 -- Index pour la table `pokemon`
 --
 ALTER TABLE `pokemon`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idDresseur` (`idDresseur`),
+  ADD KEY `idEspece` (`idEspece`);
 
 --
 -- Index pour la table `typePokemon`
@@ -580,6 +658,12 @@ ALTER TABLE `especePokemon`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 
 --
+-- AUTO_INCREMENT pour la table `lieu`
+--
+ALTER TABLE `lieu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT pour la table `pokemon`
 --
 ALTER TABLE `pokemon`
@@ -590,3 +674,28 @@ ALTER TABLE `pokemon`
 --
 ALTER TABLE `typePokemon`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `bindPokeType`
+--
+ALTER TABLE `bindPokeType`
+  ADD CONSTRAINT `bindpoketype_ibfk_1` FOREIGN KEY (`idPokemon`) REFERENCES `especePokemon` (`id`),
+  ADD CONSTRAINT `bindpoketype_ibfk_2` FOREIGN KEY (`idType`) REFERENCES `typePokemon` (`id`);
+
+--
+-- Contraintes pour la table `capture`
+--
+ALTER TABLE `capture`
+  ADD CONSTRAINT `capture_ibfk_1` FOREIGN KEY (`idLieu`) REFERENCES `lieu` (`id`),
+  ADD CONSTRAINT `capture_ibfk_2` FOREIGN KEY (`idType`) REFERENCES `typePokemon` (`id`);
+
+--
+-- Contraintes pour la table `pokemon`
+--
+ALTER TABLE `pokemon`
+  ADD CONSTRAINT `pokemon_ibfk_1` FOREIGN KEY (`idDresseur`) REFERENCES `dresseur` (`id`),
+  ADD CONSTRAINT `pokemon_ibfk_2` FOREIGN KEY (`idEspece`) REFERENCES `especePokemon` (`id`);
