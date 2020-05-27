@@ -35,4 +35,11 @@ class MainController extends AbstractController
             'nbEvo' => $nbEvo
         ]);
     }
+
+    /**
+     * @Route("/test", name="test")
+     */
+    public function test(){
+
+    }
 }

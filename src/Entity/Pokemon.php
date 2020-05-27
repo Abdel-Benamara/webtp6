@@ -5,6 +5,7 @@ namespace App\Entity;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
+use phpDocumentor\Reflection\Types\Boolean;
 
 /**
  * Pokemon
@@ -213,18 +214,38 @@ class Pokemon
         $this->action = $action;
     }
 
+
+    public function checkAction(): bool{
+        if(is_null($this->action)){
+            return true;
+        }
+        $dif = $this->action->diff(new DateTime('now'));
+        $difInHour = 0;
+        if($dif->format('%a') > 0){
+            $difInHour += (int) $dif->format('%a');
+        }
+        if($dif->format('%h') > 0){
+            $difInHour += (int) $dif->format('%h');
+        }
+        var_dump($difInHour);
+        if($difInHour > 1){
+            return true;
+        }
+        return false;
+    }
+
     /**
-     * @param \Dresseur $iddresseur
+     * @param Dresseur $iddresseur
      */
-    public function setIddresseur(\Dresseur $iddresseur): void
+    public function setIddresseur(Dresseur $iddresseur): void
     {
         $this->iddresseur = $iddresseur;
     }
 
     /**
-     * @param \Especepokemon $idespece
+     * @param Especepokemon $idespece
      */
-    public function setIdespece(\Especepokemon $idespece): void
+    public function setIdespece(Especepokemon $idespece): void
     {
         $this->idespece = $idespece;
     }
@@ -232,8 +253,12 @@ class Pokemon
     /**
      * @throws Exception
      */
-    public function getTrained(): void
+    public function getTrained(): bool
     {
+        if(!$this->checkAction()){
+            return false;
+        }
+
         $results = random_int(10, 30) + $this->xp;
 
         switch ($this->idespece->getCourbexp()){
@@ -272,7 +297,10 @@ class Pokemon
         }
 
         $this->xp = round($results, 0, PHP_ROUND_HALF_UP);
-
+        //$this->initAction();
+        $date = new DateTime();
+        $this->setAction($date);
+        return true;
     }
 
 }

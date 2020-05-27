@@ -16,6 +16,7 @@ return [
         '/dresseur' => [[['_route' => 'dresseur_index', '_controller' => 'App\\Controller\\DresseurController::index'], null, ['GET' => 0], null, true, false, null]],
         '/dresseur/new' => [[['_route' => 'dresseur_new', '_controller' => 'App\\Controller\\DresseurController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\MainController::index'], null, null, null, false, false, null]],
+        '/test' => [[['_route' => 'test', '_controller' => 'App\\Controller\\MainController::test'], null, null, null, false, false, null]],
         '/pokemon' => [[['_route' => 'pokemon_index', '_controller' => 'App\\Controller\\PokemonController::index'], null, ['GET' => 0], null, true, false, null]],
         '/pokemon/new' => [[['_route' => 'pokemon_new', '_controller' => 'App\\Controller\\PokemonController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],

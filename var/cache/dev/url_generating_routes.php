@@ -21,6 +21,7 @@ return [
     'dresseur_edit' => [['id'], ['_controller' => 'App\\Controller\\DresseurController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/dresseur']], [], []],
     'dresseur_delete' => [['id'], ['_controller' => 'App\\Controller\\DresseurController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/dresseur']], [], []],
     'home' => [[], ['_controller' => 'App\\Controller\\MainController::index'], [], [['text', '/']], [], []],
+    'test' => [[], ['_controller' => 'App\\Controller\\MainController::test'], [], [['text', '/test']], [], []],
     'pokemon_index' => [[], ['_controller' => 'App\\Controller\\PokemonController::index'], [], [['text', '/pokemon/']], [], []],
     'pokemon_new' => [[], ['_controller' => 'App\\Controller\\PokemonController::new'], [], [['text', '/pokemon/new']], [], []],
     'pokemon_show' => [['id'], ['_controller' => 'App\\Controller\\PokemonController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/pokemon']], [], []],

@@ -55,6 +55,10 @@
                 <th>Prix</th>
                 <td>{{ pokemon.prix }}</td>
             </tr>
+            <tr>
+                <th>Heure de la dernière action</th>
+                <td>{{ pokemon.action|date('Y-m-d H:i:s') }}</td>
+            </tr>
         </tbody>
     </table>
 
