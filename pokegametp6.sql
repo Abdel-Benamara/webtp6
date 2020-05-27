@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  mer. 27 mai 2020 à 14:38
+-- Généré le :  mer. 27 mai 2020 à 19:30
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.4.2
 
@@ -535,7 +535,7 @@ CREATE TABLE `pokemon` (
   `niveau` int(11) NOT NULL,
   `sexe` varchar(25) NOT NULL,
   `prix` int(11) NOT NULL,
-  `action` date DEFAULT NULL
+  `action` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -544,7 +544,7 @@ CREATE TABLE `pokemon` (
 
 INSERT INTO `pokemon` (`id`, `surnom`, `idDresseur`, `idEspece`, `xp`, `niveau`, `sexe`, `prix`, `action`) VALUES
 (1, 'Lulu', 0, 1, 0, 1, 'mâle', 0, NULL),
-(2, '', 1, 4, 227, 8, 'mâle', 0, NULL),
+(2, '', 1, 4, 16, 9, 'mâle', 0, '2020-05-27 21:20:50'),
 (3, 'Toto', 2, 7, 48, 5, 'mâle', 0, NULL);
 
 -- --------------------------------------------------------

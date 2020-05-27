@@ -57,7 +57,9 @@
             </tr>
             <tr>
                 <th>Heure de la dernière action</th>
-                <td>{{ pokemon.action|date('Y-m-d H:i:s') }}</td>
+                <td>{% if pokemon.action != null %}
+                    {{ pokemon.action|date('Y-m-d H:i:s') }}
+                    {% endif %}</td>
             </tr>
         </tbody>
     </table>

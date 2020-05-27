@@ -185,30 +185,44 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 56, $this->source); })()), "prix", [], "any", false, false, false, 56), "html", null, true);
         echo "</td>
             </tr>
+            <tr>
+                <th>Heure de la dernière action</th>
+                <td>";
+        // line 60
+        if (0 !== twig_compare(twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 60, $this->source); })()), "action", [], "any", false, false, false, 60), null)) {
+            // line 61
+            echo "                    ";
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 61, $this->source); })()), "action", [], "any", false, false, false, 61), "Y-m-d H:i:s"), "html", null, true);
+            echo "
+                    ";
+        }
+        // line 62
+        echo "</td>
+            </tr>
         </tbody>
     </table>
 
     <button class=\"btn btn-lg btn-primary\">
         <a href=\"";
-        // line 62
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_training", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 62, $this->source); })()), "id", [], "any", false, false, false, 62)]), "html", null, true);
+        // line 68
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_training", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 68, $this->source); })()), "id", [], "any", false, false, false, 68)]), "html", null, true);
         echo "\">Training</a>
     </button>
 
     <br />
 
     <a class=\"btn btn-primary\" href=\"";
-        // line 67
+        // line 73
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_index");
         echo "\">Back to list</a>
 
     <a class=\"btn btn-primary\" href=\"";
-        // line 69
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 69, $this->source); })()), "id", [], "any", false, false, false, 69)]), "html", null, true);
+        // line 75
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 75, $this->source); })()), "id", [], "any", false, false, false, 75)]), "html", null, true);
         echo "\">Edit</a>
 
     ";
-        // line 71
+        // line 77
         echo twig_include($this->env, $context, "pokemon/_delete_form.html.twig");
         echo "
 ";
@@ -232,7 +246,7 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
 
     public function getDebugInfo()
     {
-        return array (  212 => 71,  207 => 69,  202 => 67,  194 => 62,  185 => 56,  178 => 52,  173 => 49,  169 => 47,  165 => 45,  163 => 44,  156 => 40,  149 => 36,  142 => 32,  137 => 29,  130 => 27,  122 => 25,  117 => 24,  110 => 20,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  226 => 77,  221 => 75,  216 => 73,  208 => 68,  200 => 62,  194 => 61,  192 => 60,  185 => 56,  178 => 52,  173 => 49,  169 => 47,  165 => 45,  163 => 44,  156 => 40,  149 => 36,  142 => 32,  137 => 29,  130 => 27,  122 => 25,  117 => 24,  110 => 20,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -293,6 +307,12 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
             <tr>
                 <th>Prix</th>
                 <td>{{ pokemon.prix }}</td>
+            </tr>
+            <tr>
+                <th>Heure de la dernière action</th>
+                <td>{% if pokemon.action != null %}
+                    {{ pokemon.action|date('Y-m-d H:i:s') }}
+                    {% endif %}</td>
             </tr>
         </tbody>
     </table>

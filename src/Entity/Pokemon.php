@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use DateTime;
+use DateTimeZone;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
 use phpDocumentor\Reflection\Types\Boolean;
@@ -62,7 +63,7 @@ class Pokemon
     /**
      * @var DateTime|null
      *
-     * @ORM\Column(name="action", type="date", nullable=true)
+     * @ORM\Column(name="action", type="datetime", nullable=true)
      */
     private $action;
 
@@ -297,9 +298,10 @@ class Pokemon
         }
 
         $this->xp = round($results, 0, PHP_ROUND_HALF_UP);
-        //$this->initAction();
-        $date = new DateTime();
+
+        $date = new DateTime('now', new DateTimeZone('Europe/Paris'));
         $this->setAction($date);
+
         return true;
     }
 
