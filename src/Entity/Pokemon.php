@@ -216,11 +216,14 @@ class Pokemon
     }
 
 
-    public function checkAction(): bool{
+    public function isRecentAction(): bool
+    {
         if(is_null($this->action)){
-            return true;
+            return false;
         }
-        $dif = $this->action->diff(new DateTime('now'));
+
+        $now = new DateTime('now');
+        $dif = $this->action->diff($now,true);
         $difInHour = 0;
         if($dif->format('%a') > 0){
             $difInHour += (int) $dif->format('%a');
@@ -228,11 +231,10 @@ class Pokemon
         if($dif->format('%h') > 0){
             $difInHour += (int) $dif->format('%h');
         }
-        var_dump($difInHour);
-        if($difInHour > 1){
-            return true;
+        if($difInHour > 0){
+            return false;
         }
-        return false;
+        return true;
     }
 
     /**
@@ -256,7 +258,7 @@ class Pokemon
      */
     public function getTrained(): bool
     {
-        if(!$this->checkAction()){
+        if($this->isRecentAction()){
             return false;
         }
 
@@ -299,7 +301,7 @@ class Pokemon
 
         $this->xp = round($results, 0, PHP_ROUND_HALF_UP);
 
-        $date = new DateTime('now', new DateTimeZone('Europe/Paris'));
+        $date = new DateTime('now');
         $this->setAction($date);
 
         return true;

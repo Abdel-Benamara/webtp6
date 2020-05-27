@@ -22,10 +22,9 @@ class PokemonController extends AbstractController
 {
     /**
      * @Route("/", name="pokemon_index", methods={"GET"})
-     * @param DresseurRepository $dresseurRepository
      * @return Response
      */
-    public function index(DresseurRepository $dresseurRepository): Response
+    public function index(): Response
     {
         $idDresseur = $this->getUser()->getId();
 
@@ -64,10 +63,9 @@ class PokemonController extends AbstractController
     /**
      * @Route("/{id}", name="pokemon_show", methods={"GET"})
      * @param Pokemon $pokemon
-     * @param PokemonRepository $pokemonRepository
      * @return Response
      */
-    public function show(Pokemon $pokemon, PokemonRepository $pokemonRepository): Response
+    public function show(Pokemon $pokemon): Response
     {
         return $this->render('pokemon/show.html.twig', [
             'pokemon' => $pokemon,
@@ -78,18 +76,17 @@ class PokemonController extends AbstractController
      * @Route("/{id}/training", name="pokemon_training", methods={"GET"})
      * @param Pokemon $pokemon
      * @param PokemonRepository $pokemonRepository
-     * @param DresseurRepository $dresseurRepository
      * @return Response
      * @throws Exception
      */
-    public function training(Pokemon $pokemon, PokemonRepository $pokemonRepository, DresseurRepository $dresseurRepository): Response
+    public function training(Pokemon $pokemon, PokemonRepository $pokemonRepository): Response
     {
         $pokemon->getTrained($pokemonRepository);
         
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->flush();
 
-        return $this->index($dresseurRepository);
+        return $this->index();
     }
 
     /**
