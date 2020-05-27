@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\PokemonRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\Date;
+use Exception;
 
 /**
  * Pokemon
  *
- * @ORM\Table(name="pokemon")
+ * @ORM\Table(name="pokemon", indexes={@ORM\Index(name="idEspece", columns={"idEspece"}), @ORM\Index(name="idDresseur", columns={"idDresseur"})})
  * @ORM\Entity
  */
 class Pokemon
@@ -29,20 +29,6 @@ class Pokemon
      * @ORM\Column(name="surnom", type="string", length=25, nullable=false)
      */
     private $surnom;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="idDresseur", type="integer", nullable=false)
-     */
-    private $iddresseur;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="idEspece", type="integer", nullable=false)
-     */
-    private $idespece;
 
     /**
      * @var int
@@ -73,12 +59,31 @@ class Pokemon
     private $prix;
 
     /**
-     * @var Date
+     * @var DateTime|null
      *
      * @ORM\Column(name="action", type="date", nullable=true)
      */
     private $action;
 
+    /**
+     * @var Dresseur
+     *
+     * @ORM\ManyToOne(targetEntity="Dresseur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idDresseur", referencedColumnName="id")
+     * })
+     */
+    private $iddresseur;
+
+    /**
+     * @var Especepokemon
+     *
+     * @ORM\ManyToOne(targetEntity="Especepokemon")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idEspece", referencedColumnName="id")
+     * })
+     */
+    private $idespece;
 
     /**
      * @return int
@@ -94,22 +99,6 @@ class Pokemon
     public function getSurnom(): ?string
     {
         return $this->surnom;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIddresseur(): ?int
-    {
-        return $this->iddresseur;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIdespece(): ?int
-    {
-        return $this->idespece;
     }
 
     /**
@@ -145,79 +134,109 @@ class Pokemon
     }
 
     /**
-     * @return Date
+     * @return DateTime|null
      */
-    public function getAction(): Date
+    public function getAction(): ?DateTime
     {
         return $this->action;
     }
 
-    public function setId(int $id): self
+    /**
+     * @return Dresseur
+     */
+    public function getIddresseur(): ?Dresseur
+    {
+        return $this->iddresseur;
+    }
+
+    /**
+     * @return Especepokemon
+     */
+    public function getIdespece(): ?Especepokemon
+    {
+        return $this->idespece;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
     {
         $this->id = $id;
-
-        return $this;
     }
 
-    public function setIddresseur(int $iddresseur): self
-    {
-        $this->iddresseur = $iddresseur;
-
-        return $this;
-    }
-
-    public function setIdespece(int $idespece): self
-    {
-        $this->idespece = $idespece;
-
-        return $this;
-    }
-
-    public function setXp(int $xp): self
-    {
-        $this->xp = $xp;
-
-        return $this;
-    }
-
-    public function setNiveau(int $niveau): self
-    {
-        $this->niveau = $niveau;
-
-        return $this;
-    }
-
-    public function setSexe(string $sexe): self
-    {
-        $this->sexe = $sexe;
-
-        return $this;
-    }
-
-    public function setPrix(int $prix): self
-    {
-        $this->prix = $prix;
-
-        return $this;
-    }
-
-    public function setSurnom(string $surnom): self
+    /**
+     * @param string $surnom
+     */
+    public function setSurnom(string $surnom): void
     {
         $this->surnom = $surnom;
-
-        return $this;
     }
 
-    public function setAction(Date $action): self
+    /**
+     * @param int $xp
+     */
+    public function setXp(int $xp): void
+    {
+        $this->xp = $xp;
+    }
+
+    /**
+     * @param int $niveau
+     */
+    public function setNiveau(int $niveau): void
+    {
+        $this->niveau = $niveau;
+    }
+
+    /**
+     * @param string $sexe
+     */
+    public function setSexe(string $sexe): void
+    {
+        $this->sexe = $sexe;
+    }
+
+    /**
+     * @param int $prix
+     */
+    public function setPrix(int $prix): void
+    {
+        $this->prix = $prix;
+    }
+
+    /**
+     * @param DateTime|null $action
+     */
+    public function setAction(?DateTime $action): void
     {
         $this->action = $action;
-
-        return $this;
     }
 
-    public function getTrained(PokemonRepository $pokemonRepository):void {
+    /**
+     * @param \Dresseur $iddresseur
+     */
+    public function setIddresseur(\Dresseur $iddresseur): void
+    {
+        $this->iddresseur = $iddresseur;
+    }
+
+    /**
+     * @param \Especepokemon $idespece
+     */
+    public function setIdespece(\Especepokemon $idespece): void
+    {
+        $this->idespece = $idespece;
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function getTrained(): void
+    {
         $results = random_int(10, 30) + $this->xp;
-        switch ($pokemonRepository->getEspece($this->id)['courbeXP']){
+
+        switch ($this->idespece->getCourbexp()){
             case 'R':
                 $exp = 0.8 * (pow($this->niveau, 3));
                 while ($results > $exp){
@@ -251,6 +270,7 @@ class Pokemon
                 }
                 break;
         }
+
         $this->xp = round($results, 0, PHP_ROUND_HALF_UP);
 
     }

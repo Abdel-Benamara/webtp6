@@ -9,11 +9,11 @@
         <tbody>
             <tr>
                 <th>Idespece</th>
-                <td>{{ pokemon.idespece }}</td>
+                <td>{{ pokemon.idespece.id }}</td>
             </tr>
             <tr>
                 <th>Nom</th>
-                <td>{{ espece.nom }}</td>
+                <td>{{ pokemon.idespece.nom }}</td>
             </tr>
             <tr>
                 <th>Surnom</th>
@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <th>Type</th>
-            {% for row in type %}
+            {% for row in pokemon.idespece.idType %}
                     <td>{{ row.type }}</td>
             {% else %}
                     <td colspan="2">no records found</td>
@@ -29,7 +29,7 @@
             </tr>
             <tr>
                 <th>Courbe XP</th>
-                <td>{{ espece.courbeXP }}</td>
+                <td>{{ pokemon.idespece.courbeXP }}</td>
             </tr>
             <tr>
                 <th>XP</th>
@@ -41,7 +41,7 @@
             </tr>
             <tr>
                 <th>Evolution</th>
-                {% if espece.evolution == 'o' %}
+                {% if pokemon.idespece.evolution == 'o' %}
                     <td>Oui</td>
                 {% else %}
                     <td>Non</td>

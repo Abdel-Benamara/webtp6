@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,46 +43,67 @@ class Especepokemon
      */
     private $evolution;
 
+    /**
+     * @var Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Typepokemon", inversedBy="idpokemon")
+     * @ORM\JoinTable(name="bindpoketype",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="idPokemon", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="idType", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $idtype;
+
+    /**
+     * @return int
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string
+     */
     public function getNom(): ?string
     {
         return $this->nom;
     }
 
-    public function setNom(string $nom): self
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
+    /**
+     * @return string
+     */
     public function getCourbexp(): ?string
     {
         return $this->courbexp;
     }
 
-    public function setCourbexp(string $courbexp): self
-    {
-        $this->courbexp = $courbexp;
-
-        return $this;
-    }
-
+    /**
+     * @return string
+     */
     public function getEvolution(): ?string
     {
         return $this->evolution;
     }
 
-    public function setEvolution(string $evolution): self
+    /**
+     * @return Collection
+     */
+    public function getIdtype(): Collection
     {
-        $this->evolution = $evolution;
-
-        return $this;
+        return $this->idtype;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idtype = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 }

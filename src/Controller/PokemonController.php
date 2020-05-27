@@ -6,6 +6,8 @@ use App\Entity\Pokemon;
 use App\Form\PokemonType;
 use App\Repository\DresseurRepository;
 use App\Repository\PokemonRepository;
+use Doctrine\DBAL\DBALException;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,17 +24,12 @@ class PokemonController extends AbstractController
      * @Route("/", name="pokemon_index", methods={"GET"})
      * @param DresseurRepository $dresseurRepository
      * @return Response
-     * @throws \Doctrine\DBAL\DBALException
      */
     public function index(DresseurRepository $dresseurRepository): Response
     {
         $idDresseur = $this->getUser()->getId();
 
-        // $pokemon = $this->getDoctrine()
-        //     ->getRepository(Pokemon::class)
-        //     ->findAll();
-
-        $pokemon = $dresseurRepository->getListPokemon($idDresseur);
+        $pokemon = $this->getDoctrine()->getRepository(Pokemon::class)->findBy(array('iddresseur' => $idDresseur));
 
         return $this->render('pokemon/index.html.twig', [
             'pokemon' => $pokemon,
@@ -69,18 +66,11 @@ class PokemonController extends AbstractController
      * @param Pokemon $pokemon
      * @param PokemonRepository $pokemonRepository
      * @return Response
-     * @throws \Doctrine\DBAL\DBALException
      */
     public function show(Pokemon $pokemon, PokemonRepository $pokemonRepository): Response
     {
-        $espece = $pokemonRepository->getEspece($pokemon->getId());
-
-        $type = $pokemonRepository->getType($pokemon->getId());
-
         return $this->render('pokemon/show.html.twig', [
             'pokemon' => $pokemon,
-            'espece' => $espece,
-            'type' => $type,
         ]);
     }
 
@@ -90,7 +80,7 @@ class PokemonController extends AbstractController
      * @param PokemonRepository $pokemonRepository
      * @param DresseurRepository $dresseurRepository
      * @return Response
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws Exception
      */
     public function training(Pokemon $pokemon, PokemonRepository $pokemonRepository, DresseurRepository $dresseurRepository): Response
     {

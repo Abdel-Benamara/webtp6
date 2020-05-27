@@ -17,8 +17,8 @@
         <tbody>
         {% for pokemon in pokemon %}
             <tr>
-                <td>{{ pokemon.idEspece }}</td>
-                <td>{{ pokemon.nom }}</td>
+                <td>{{ pokemon.idEspece.id }}</td>
+                <td>{{ pokemon.idEspece.nom }}</td>
                 <td>{{ pokemon.surnom }}</td>
                 <td>
                     <a href="{{ path('pokemon_show', {'id': pokemon.id}) }}">Show</a>

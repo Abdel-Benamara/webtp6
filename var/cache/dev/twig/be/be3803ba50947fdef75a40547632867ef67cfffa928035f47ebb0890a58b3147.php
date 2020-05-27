@@ -90,7 +90,7 @@ class __TwigTemplate_69d97f4c05ccbecfcb4f3a6b557233b07d17813ab2a4b9e8669c7807fc6
 
     <h4 class=\"card-title\"><span class=\"badge badge-pill badge-primary\">";
         // line 9
-        echo twig_escape_filter($this->env, (isset($context["money"]) || array_key_exists("money", $context) ? $context["money"] : (function () { throw new RuntimeError('Variable "money" does not exist.', 9, $this->source); })()), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["dresseur"]) || array_key_exists("dresseur", $context) ? $context["dresseur"] : (function () { throw new RuntimeError('Variable "dresseur" does not exist.', 9, $this->source); })()), "money", [], "any", false, false, false, 9), "html", null, true);
         echo "</span> piece(s) dans ton porte monnaie !</h4>
 
     <h4 class=\"card-title\"><span class=\"badge badge-pill badge-primary\">";
@@ -185,7 +185,7 @@ class __TwigTemplate_69d97f4c05ccbecfcb4f3a6b557233b07d17813ab2a4b9e8669c7807fc6
 
     <h5 class=\"card-title\">Bienvenue sur ton Pokedex</h5>
 
-    <h4 class=\"card-title\"><span class=\"badge badge-pill badge-primary\">{{ money }}</span> piece(s) dans ton porte monnaie !</h4>
+    <h4 class=\"card-title\"><span class=\"badge badge-pill badge-primary\">{{ dresseur.money }}</span> piece(s) dans ton porte monnaie !</h4>
 
     <h4 class=\"card-title\"><span class=\"badge badge-pill badge-primary\">{{ total }}</span> Pokemon dans ton Pokedex. Ajoutes-en vite de nouveaux !</h4>
 

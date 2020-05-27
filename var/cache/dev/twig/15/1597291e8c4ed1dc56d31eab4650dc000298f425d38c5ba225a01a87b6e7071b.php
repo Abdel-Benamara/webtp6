@@ -107,11 +107,11 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
             echo "            <tr>
                 <td>";
             // line 20
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["pokemon"], "idEspece", [], "any", false, false, false, 20), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["pokemon"], "idEspece", [], "any", false, false, false, 20), "id", [], "any", false, false, false, 20), "html", null, true);
             echo "</td>
                 <td>";
             // line 21
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["pokemon"], "nom", [], "any", false, false, false, 21), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["pokemon"], "idEspece", [], "any", false, false, false, 21), "nom", [], "any", false, false, false, 21), "html", null, true);
             echo "</td>
                 <td>";
             // line 22
@@ -191,8 +191,8 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
         <tbody>
         {% for pokemon in pokemon %}
             <tr>
-                <td>{{ pokemon.idEspece }}</td>
-                <td>{{ pokemon.nom }}</td>
+                <td>{{ pokemon.idEspece.id }}</td>
+                <td>{{ pokemon.idEspece.nom }}</td>
                 <td>{{ pokemon.surnom }}</td>
                 <td>
                     <a href=\"{{ path('pokemon_show', {'id': pokemon.id}) }}\">Show</a>

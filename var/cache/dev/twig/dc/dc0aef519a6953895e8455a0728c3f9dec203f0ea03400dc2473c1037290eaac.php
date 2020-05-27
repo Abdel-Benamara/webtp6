@@ -93,14 +93,14 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
                 <th>Idespece</th>
                 <td>";
         // line 12
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 12, $this->source); })()), "idespece", [], "any", false, false, false, 12), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 12, $this->source); })()), "idespece", [], "any", false, false, false, 12), "id", [], "any", false, false, false, 12), "html", null, true);
         echo "</td>
             </tr>
             <tr>
                 <th>Nom</th>
                 <td>";
         // line 16
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["espece"]) || array_key_exists("espece", $context) ? $context["espece"] : (function () { throw new RuntimeError('Variable "espece" does not exist.', 16, $this->source); })()), "nom", [], "any", false, false, false, 16), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 16, $this->source); })()), "idespece", [], "any", false, false, false, 16), "nom", [], "any", false, false, false, 16), "html", null, true);
         echo "</td>
             </tr>
             <tr>
@@ -115,7 +115,7 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
             ";
         // line 24
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["type"]) || array_key_exists("type", $context) ? $context["type"] : (function () { throw new RuntimeError('Variable "type" does not exist.', 24, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 24, $this->source); })()), "idespece", [], "any", false, false, false, 24), "idType", [], "any", false, false, false, 24));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["row"]) {
             // line 25
@@ -139,7 +139,7 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
                 <th>Courbe XP</th>
                 <td>";
         // line 32
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["espece"]) || array_key_exists("espece", $context) ? $context["espece"] : (function () { throw new RuntimeError('Variable "espece" does not exist.', 32, $this->source); })()), "courbeXP", [], "any", false, false, false, 32), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 32, $this->source); })()), "idespece", [], "any", false, false, false, 32), "courbeXP", [], "any", false, false, false, 32), "html", null, true);
         echo "</td>
             </tr>
             <tr>
@@ -160,7 +160,7 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
                 <th>Evolution</th>
                 ";
         // line 44
-        if (0 === twig_compare(twig_get_attribute($this->env, $this->source, (isset($context["espece"]) || array_key_exists("espece", $context) ? $context["espece"] : (function () { throw new RuntimeError('Variable "espece" does not exist.', 44, $this->source); })()), "evolution", [], "any", false, false, false, 44), "o")) {
+        if (0 === twig_compare(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 44, $this->source); })()), "idespece", [], "any", false, false, false, 44), "evolution", [], "any", false, false, false, 44), "o")) {
             // line 45
             echo "                    <td>Oui</td>
                 ";
@@ -248,11 +248,11 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
         <tbody>
             <tr>
                 <th>Idespece</th>
-                <td>{{ pokemon.idespece }}</td>
+                <td>{{ pokemon.idespece.id }}</td>
             </tr>
             <tr>
                 <th>Nom</th>
-                <td>{{ espece.nom }}</td>
+                <td>{{ pokemon.idespece.nom }}</td>
             </tr>
             <tr>
                 <th>Surnom</th>
@@ -260,7 +260,7 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
             </tr>
             <tr>
                 <th>Type</th>
-            {% for row in type %}
+            {% for row in pokemon.idespece.idType %}
                     <td>{{ row.type }}</td>
             {% else %}
                     <td colspan=\"2\">no records found</td>
@@ -268,7 +268,7 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
             </tr>
             <tr>
                 <th>Courbe XP</th>
-                <td>{{ espece.courbeXP }}</td>
+                <td>{{ pokemon.idespece.courbeXP }}</td>
             </tr>
             <tr>
                 <th>XP</th>
@@ -280,7 +280,7 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
             </tr>
             <tr>
                 <th>Evolution</th>
-                {% if espece.evolution == 'o' %}
+                {% if pokemon.idespece.evolution == 'o' %}
                     <td>Oui</td>
                 {% else %}
                     <td>Non</td>

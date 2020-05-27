@@ -4,6 +4,9 @@ namespace App\Repository;
 
 use App\Entity\Dresseur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\DBALException;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 use PDO;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -27,8 +30,8 @@ class DresseurRepository extends ServiceEntityRepository implements PasswordUpgr
      * Used to upgrade (rehash) the user's password automatically over time.
      * @param UserInterface $user
      * @param string $newEncodedPassword
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws ORMException
+     * @throws OptimisticLockException
      */
     public function upgradePassword(UserInterface $user, string $newEncodedPassword): void
     {
@@ -43,23 +46,8 @@ class DresseurRepository extends ServiceEntityRepository implements PasswordUpgr
 
     /**
      * @param $idDresseur
-     * @return mixed[] Returns an array of PokemonType objects
-     * @throws \Doctrine\DBAL\DBALException
-     */
-    public function getListPokemon($idDresseur){
-        $conn = $this->getEntityManager()->getConnection();
-        $sql = 'SELECT p.*, e.nom, e.courbeXP, e.evolution FROM dresseur AS d, pokemon AS p, especePokemon AS e WHERE d.id = :num AND d.id = p.idDresseur AND p.idEspece = e.id';
-
-        $stmt = $conn->prepare($sql);
-        $stmt->bindValue(':num', $idDresseur, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
-
-    /**
-     * @param $idDresseur
      * @return mixed[]
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function getStatsByType($idDresseur){
         $conn = $this->getEntityManager()->getConnection();
@@ -74,7 +62,7 @@ class DresseurRepository extends ServiceEntityRepository implements PasswordUpgr
     /**
      * @param $idDresseur
      * @return mixed[] Returns an array of PokemonType objects
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function getNbEvo($idDresseur){
         $conn = $this->getEntityManager()->getConnection();
@@ -84,16 +72,6 @@ class DresseurRepository extends ServiceEntityRepository implements PasswordUpgr
         $stmt->bindValue(':num', $idDresseur, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch()['nbEvo'];
-    }
-
-    public function getMoney($idDresseur){
-        $conn = $this->getEntityManager()->getConnection();
-        $sql = 'SELECT money FROM dresseur WHERE id = :num;';
-
-        $stmt = $conn->prepare($sql);
-        $stmt->bindValue(':num', $idDresseur, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetch()['money'];
     }
 
     // /**

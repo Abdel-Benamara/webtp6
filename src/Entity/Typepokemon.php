@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,22 +29,59 @@ class Typepokemon
      */
     private $type;
 
-    public function getId(): ?int
+    /**
+     * @var Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Especepokemon", mappedBy="idtype")
+     */
+    private $idpokemon;
+
+    /**
+     * @var Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Lieu", mappedBy="idtype")
+     */
+    private $idlieu;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idpokemon = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idlieu = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getType(): ?string
+    /**
+     * @return string
+     */
+    public function getType(): string
     {
         return $this->type;
     }
 
-    public function setType(string $type): self
+    /**
+     * @return Collection
+     */
+    public function getIdpokemon(): Collection
     {
-        $this->type = $type;
-
-        return $this;
+        return $this->idpokemon;
     }
 
+    /**
+     * @return Collection
+     */
+    public function getIdlieu(): Collection
+    {
+        return $this->idlieu;
+    }
 
 }
