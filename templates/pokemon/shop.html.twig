@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Shop Pokemon{% endblock %}
+
+{% block body %}
+    <h1>Shop Pokemon</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Vendeur</th>
+            <th>Pokedex Id</th>
+            <th>Nom</th>
+            <th>Surnom</th>
+            <th>Type</th>
+            <th>Courbe XP</th>
+            <th>XP</th>
+            <th>Niveau</th>
+            <th>Evolution</th>
+            <th>Sexe</th>
+            <th>Prix</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pokemon in pokemons %}
+            <tr>
+                <td>{{ pokemon.idDresseur.pseudo }}</td>
+                <td>{{ pokemon.idEspece.id }}</td>
+                <td>{{ pokemon.idEspece.nom }}</td>
+                <td>{{ pokemon.surnom }}</td>
+                <td>
+                    {% for row in pokemon.idespece.idType %}
+                        {{ row.type }}
+                    {% endfor %}
+                </td>
+                <td>{{ pokemon.idespece.courbeXP }}</td>
+                <td>{{ pokemon.xp }}</td>
+                <td>{{ pokemon.niveau }}</td>
+                <td>
+                    {% if pokemon.idespece.evolution == 'o' %}
+                        Oui
+                    {% else %}
+                        Non
+                    {% endif %}
+                </td>
+                <td>{{ pokemon.sexe }}</td>
+                <td>{{ pokemon.prix }}</td>
+                <td>
+                    <a
+                            {% if app.user.money < pokemon.prix %}
+                                style="color: grey"
+                            {% else %}
+                                href="{{ path('pokemon_buy', {'id': pokemon.id}) }}"
+                            {% endif %}
+                    >Buy</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucun pokemon ne correspond à la requête</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

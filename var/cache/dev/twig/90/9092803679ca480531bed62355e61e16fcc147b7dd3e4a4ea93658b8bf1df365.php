@@ -101,16 +101,11 @@ class __TwigTemplate_730320d5168f3f8e63da72498243904035bcc3b4652ff91924a2be0b821
 
     <a class=\"btn btn-primary\" href=\"";
         // line 17
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
-        echo "\">home</a>
-
-    <a class=\"btn btn-primary\" href=\"";
-        // line 19
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dresseur_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["dresseur"]) || array_key_exists("dresseur", $context) ? $context["dresseur"] : (function () { throw new RuntimeError('Variable "dresseur" does not exist.', 19, $this->source); })()), "id", [], "any", false, false, false, 19)]), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dresseur_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["dresseur"]) || array_key_exists("dresseur", $context) ? $context["dresseur"] : (function () { throw new RuntimeError('Variable "dresseur" does not exist.', 17, $this->source); })()), "id", [], "any", false, false, false, 17)]), "html", null, true);
         echo "\">edit</a>
 
     ";
-        // line 21
+        // line 19
         echo twig_include($this->env, $context, "dresseur/_delete_form.html.twig");
         echo "
 ";
@@ -134,7 +129,7 @@ class __TwigTemplate_730320d5168f3f8e63da72498243904035bcc3b4652ff91924a2be0b821
 
     public function getDebugInfo()
     {
-        return array (  114 => 21,  109 => 19,  104 => 17,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  109 => 19,  104 => 17,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -154,8 +149,6 @@ class __TwigTemplate_730320d5168f3f8e63da72498243904035bcc3b4652ff91924a2be0b821
             </tr>
         </tbody>
     </table>
-
-    <a class=\"btn btn-primary\" href=\"{{ path('home') }}\">home</a>
 
     <a class=\"btn btn-primary\" href=\"{{ path('dresseur_edit', {'id': dresseur.id}) }}\">edit</a>
 

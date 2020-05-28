@@ -20,7 +20,7 @@ class DresseurController extends AbstractController
 {
     /**
      * @Route("/", name="dresseur_index", methods={"GET"})
-     * @IsGranted("ROLE_ADMIN", message="No access! Get out!")
+     * @IsGranted("ROLE_ADMIN", message="No access! You are not an admin!")
      * @param DresseurRepository $dresseurRepository
      * @return Response
      */
@@ -51,7 +51,7 @@ class DresseurController extends AbstractController
      */
     public function edit(Request $request, Dresseur $dresseur): Response
     {
-        if ($this->getUser()->getId() != $request->get('id')) {
+        if ($this->getUser()->getId() != $request->get('id') and sizeof($this->getUser()->getRoles()) == 1) {
             return $this->redirectToRoute('home');
         }
 
@@ -72,7 +72,7 @@ class DresseurController extends AbstractController
 
     /**
      * @Route("/{id}", name="dresseur_delete", methods={"DELETE"})
-     * @IsGranted("ROLE_ADMIN", message="No access! Get out!")
+     * @IsGranted("ROLE_ADMIN", message="No access! You are not an admin!")
      * @param Request $request
      * @param Dresseur $dresseur
      * @return Response

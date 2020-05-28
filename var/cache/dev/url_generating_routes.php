@@ -31,7 +31,7 @@ return [
     'pokemon_training' => [['id'], ['_controller' => 'App\\Controller\\PokemonController::training'], [], [['text', '/training'], ['variable', '/', '[^/]++', 'id', true], ['text', '/pokemon']], [], []],
     'pokemon_edit' => [['id'], ['_controller' => 'App\\Controller\\PokemonController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/pokemon']], [], []],
     'pokemon_sell' => [['id'], ['_controller' => 'App\\Controller\\PokemonController::sell'], [], [['text', '/sell'], ['variable', '/', '[^/]++', 'id', true], ['text', '/pokemon']], [], []],
-    'pokemon_buy_index' => [[], ['_controller' => 'App\\Controller\\PokemonController::buyIndex'], [], [['text', '/pokemon/buy']], [], []],
+    'pokemon_shop' => [[], ['_controller' => 'App\\Controller\\PokemonController::shop'], [], [['text', '/pokemon//shop']], [], []],
     'pokemon_buy' => [['id'], ['_controller' => 'App\\Controller\\PokemonController::buy'], [], [['text', '/buy'], ['variable', '/', '[^/]++', 'id', true], ['text', '/pokemon']], [], []],
     'pokemon_delete' => [['id'], ['_controller' => 'App\\Controller\\PokemonController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/pokemon']], [], []],
     'app_register' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], []],

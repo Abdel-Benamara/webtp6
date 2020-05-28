@@ -25,7 +25,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 1 => 'ROLE_ADMIN',
             ],
             'message' => [
-                1 => 'No access! Get out!',
+                1 => 'No access! You are not an admin!',
             ],
         ],
     ],

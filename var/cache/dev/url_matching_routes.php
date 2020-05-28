@@ -19,6 +19,7 @@ return [
         '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\MainController::index'], null, null, null, false, false, null]],
         '/pokemon' => [[['_route' => 'pokemon_index', '_controller' => 'App\\Controller\\PokemonController::index'], null, ['GET' => 0], null, true, false, null]],
         '/pokemon/new' => [[['_route' => 'pokemon_new', '_controller' => 'App\\Controller\\PokemonController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/pokemon//shop' => [[['_route' => 'pokemon_shop', '_controller' => 'App\\Controller\\PokemonController::shop'], null, ['GET' => 0], null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
@@ -50,20 +51,15 @@ return [
                     .'|/edit(*:250)'
                     .'|(*:258)'
                 .')'
-                .'|/pokemon/(?'
-                    .'|([^/]++)(?'
-                        .'|(*:290)'
-                        .'|/(?'
-                            .'|training(*:310)'
-                            .'|edit(*:322)'
-                            .'|sell(*:334)'
-                        .')'
+                .'|/pokemon/([^/]++)(?'
+                    .'|(*:287)'
+                    .'|/(?'
+                        .'|training(*:307)'
+                        .'|edit(*:319)'
+                        .'|sell(*:331)'
+                        .'|buy(*:342)'
                     .')'
-                    .'|buy(*:347)'
-                    .'|([^/]++)(?'
-                        .'|/buy(*:370)'
-                        .'|(*:378)'
-                    .')'
+                    .'|(*:351)'
                 .')'
             .')/?$}sDu',
     ],
@@ -81,13 +77,12 @@ return [
         237 => [[['_route' => 'lieu_visit', '_controller' => 'App\\Controller\\LieuController::visit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
         250 => [[['_route' => 'lieu_edit', '_controller' => 'App\\Controller\\LieuController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         258 => [[['_route' => 'lieu_delete', '_controller' => 'App\\Controller\\LieuController::delete'], ['id'], ['DELETE' => 0], null, false, true, null]],
-        290 => [[['_route' => 'pokemon_show', '_controller' => 'App\\Controller\\PokemonController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        310 => [[['_route' => 'pokemon_training', '_controller' => 'App\\Controller\\PokemonController::training'], ['id'], ['GET' => 0], null, false, false, null]],
-        322 => [[['_route' => 'pokemon_edit', '_controller' => 'App\\Controller\\PokemonController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        334 => [[['_route' => 'pokemon_sell', '_controller' => 'App\\Controller\\PokemonController::sell'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        347 => [[['_route' => 'pokemon_buy_index', '_controller' => 'App\\Controller\\PokemonController::buyIndex'], [], ['GET' => 0], null, false, false, null]],
-        370 => [[['_route' => 'pokemon_buy', '_controller' => 'App\\Controller\\PokemonController::buy'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        378 => [
+        287 => [[['_route' => 'pokemon_show', '_controller' => 'App\\Controller\\PokemonController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        307 => [[['_route' => 'pokemon_training', '_controller' => 'App\\Controller\\PokemonController::training'], ['id'], ['GET' => 0], null, false, false, null]],
+        319 => [[['_route' => 'pokemon_edit', '_controller' => 'App\\Controller\\PokemonController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        331 => [[['_route' => 'pokemon_sell', '_controller' => 'App\\Controller\\PokemonController::sell'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        342 => [[['_route' => 'pokemon_buy', '_controller' => 'App\\Controller\\PokemonController::buy'], ['id'], ['GET' => 0], null, false, false, null]],
+        351 => [
             [['_route' => 'pokemon_delete', '_controller' => 'App\\Controller\\PokemonController::delete'], ['id'], ['DELETE' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

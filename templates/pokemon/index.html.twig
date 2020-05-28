@@ -15,7 +15,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for pokemon in pokemon %}
+        {% for pokemon in pokemons %}
             <tr>
                 <td>{{ pokemon.idEspece.id }}</td>
                 <td>{{ pokemon.idEspece.nom }}</td>
@@ -32,7 +32,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">Aucun pokemon ne correspond à la requête</td>
             </tr>
         {% endfor %}
         </tbody>

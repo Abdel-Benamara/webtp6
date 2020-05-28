@@ -2,12 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Dresseur;
 use App\Entity\Pokemon;
 use App\Form\PokemonType;
 use App\Form\SellPokemonType;
-use App\Repository\DresseurRepository;
 use App\Repository\PokemonRepository;
-use Doctrine\DBAL\DBALException;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,15 +28,16 @@ class PokemonController extends AbstractController
     {
         $idDresseur = $this->getUser()->getId();
 
-        $pokemon = $this->getDoctrine()->getRepository(Pokemon::class)->findBy(array('iddresseur' => $idDresseur));
+        $pokemons = $this->getDoctrine()->getRepository(Pokemon::class)->findBy(array('iddresseur' => $idDresseur));
 
         return $this->render('pokemon/index.html.twig', [
-            'pokemon' => $pokemon,
+            'pokemons' => $pokemons,
         ]);
     }
 
     /**
      * @Route("/new", name="pokemon_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN", message="No access! You are not an admin!")
      * @param Request $request
      * @return Response
      */
@@ -139,23 +139,43 @@ class PokemonController extends AbstractController
     }
 
     /**
-     * @Route("/buy", name="pokemon_buy_index", methods={"GET"})
+     * @Route("//shop", name="pokemon_shop", methods={"GET"})
      * @return Response
      */
-    public function buyIndex(): Response
+    public function shop(): Response
     {
-        // TODO
+        $pokemons = $this->getDoctrine()->getRepository(Pokemon::class)->findBy(array('toSell' => true));
+
+        $results = array();
+        foreach ($pokemons as $poke) {
+            if ($poke->getIddresseur()->getId() != $this->getUser()->getId())
+                array_push($results, $poke);
+        }
+
+        return $this->render('pokemon/shop.html.twig', [
+            'pokemons' => $results,
+        ]);
     }
 
     /**
-     * @Route("/{id}/buy", name="pokemon_buy", methods={"GET","POST"})
-     * @param Request $request
+     * @Route("/{id}/buy", name="pokemon_buy", methods={"GET"})
      * @param Pokemon $pokemon
      * @return Response
      */
-    public function buy(Request $request, Pokemon $pokemon): Response
+    public function buy(Pokemon $pokemon): Response
     {
-        // TODO
+        $seller = $this->getDoctrine()->getRepository(Dresseur::class)->findBy(array('id' => $pokemon->getIddresseur()->getId()));
+        $seller[0]->setMoney($seller[0]->getMoney() + $pokemon->getPrix());
+        $this->getUser()->setMoney($this->getUser()->getMoney() - $pokemon->getPrix());
+
+        $pokemon->setToSell(false);
+        $pokemon->setPrix(0);
+        $pokemon->setIddresseur($this->getUser());
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->flush();
+
+        return $this->index();
     }
 
     /**

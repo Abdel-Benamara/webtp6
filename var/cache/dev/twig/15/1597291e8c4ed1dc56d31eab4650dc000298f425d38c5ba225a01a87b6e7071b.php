@@ -100,7 +100,7 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
         ";
         // line 18
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable($context["pokemon"]);
+        $context['_seq'] = twig_ensure_traversable((isset($context["pokemons"]) || array_key_exists("pokemons", $context) ? $context["pokemons"] : (function () { throw new RuntimeError('Variable "pokemons" does not exist.', 18, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["pokemon"]) {
             // line 19
@@ -147,7 +147,7 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
         if (!$context['_iterated']) {
             // line 34
             echo "            <tr>
-                <td colspan=\"8\">no records found</td>
+                <td colspan=\"8\">Aucun pokemon ne correspond à la requête</td>
             </tr>
         ";
         }
@@ -201,7 +201,7 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
         </tr>
         </thead>
         <tbody>
-        {% for pokemon in pokemon %}
+        {% for pokemon in pokemons %}
             <tr>
                 <td>{{ pokemon.idEspece.id }}</td>
                 <td>{{ pokemon.idEspece.nom }}</td>
@@ -218,7 +218,7 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
             </tr>
         {% else %}
             <tr>
-                <td colspan=\"8\">no records found</td>
+                <td colspan=\"8\">Aucun pokemon ne correspond à la requête</td>
             </tr>
         {% endfor %}
         </tbody>

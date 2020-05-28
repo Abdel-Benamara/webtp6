@@ -157,7 +157,7 @@ class __TwigTemplate_69d97f4c05ccbecfcb4f3a6b557233b07d17813ab2a4b9e8669c7807fc6
     <a class=\"btn btn-primary\" href=\"";
         // line 39
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dresseur_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["dresseur"]) || array_key_exists("dresseur", $context) ? $context["dresseur"] : (function () { throw new RuntimeError('Variable "dresseur" does not exist.', 39, $this->source); })()), "id", [], "any", false, false, false, 39)]), "html", null, true);
-        echo "\">edit</a>
+        echo "\">edit profile</a>
 
 ";
         
@@ -223,7 +223,7 @@ class __TwigTemplate_69d97f4c05ccbecfcb4f3a6b557233b07d17813ab2a4b9e8669c7807fc6
         </tbody>
     </table>
 
-    <a class=\"btn btn-primary\" href=\"{{ path('dresseur_edit', {'id': dresseur.id}) }}\">edit</a>
+    <a class=\"btn btn-primary\" href=\"{{ path('dresseur_edit', {'id': dresseur.id}) }}\">edit profile</a>
 
 {% endblock %}
 ", "main/index.html.twig", "/Users/abdelbenamara/Symfony-projects/webtp6/templates/main/index.html.twig");

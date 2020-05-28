@@ -28,18 +28,18 @@ class LieuController extends AbstractController
      */
     public function index(): Response
     {
-        $lieus = $this->getDoctrine()
+        $lieux = $this->getDoctrine()
             ->getRepository(Lieu::class)
             ->findAll();
 
         return $this->render('lieu/index.html.twig', [
-            'lieus' => $lieus,
+            'lieux' => $lieux,
         ]);
     }
 
     /**
      * @Route("/new", name="lieu_new", methods={"GET","POST"})
-     * @IsGranted("ROLE_ADMIN", message="No access! Get out!")
+     * @IsGranted("ROLE_ADMIN", message="No access! You are not an admin!")
      * @param Request $request
      * @return Response
      */
@@ -131,7 +131,7 @@ class LieuController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="lieu_edit", methods={"GET","POST"})
-     * @IsGranted("ROLE_ADMIN", message="No access! Get out!")
+     * @IsGranted("ROLE_ADMIN", message="No access! You are not an admin!")
      * @param Request $request
      * @param Lieu $lieu
      * @return Response
@@ -155,7 +155,7 @@ class LieuController extends AbstractController
 
     /**
      * @Route("/{id}", name="lieu_delete", methods={"DELETE"})
-     * @IsGranted("ROLE_ADMIN", message="No access! Get out!")
+     * @IsGranted("ROLE_ADMIN", message="No access! You are not an admin!")
      * @param Request $request
      * @param Lieu $lieu
      * @return Response

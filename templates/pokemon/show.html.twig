@@ -7,74 +7,76 @@
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Espece Id</th>
-                <td>{{ pokemon.idespece.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ pokemon.idespece.nom }}</td>
-            </tr>
-            <tr>
-                <th>Surnom</th>
-                <td>{{ pokemon.surnom }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>
-                    {% for row in pokemon.idespece.idType %}
-                        {{ row.type }}
-                    {% endfor %}
-                </td>
-            </tr>
-            <tr>
-                <th>Courbe XP</th>
-                <td>{{ pokemon.idespece.courbeXP }}</td>
-            </tr>
-            <tr>
-                <th>XP</th>
-                <td>{{ pokemon.xp }}</td>
-            </tr>
-            <tr>
-                <th>Niveau</th>
-                <td>{{ pokemon.niveau }}</td>
-            </tr>
-            <tr>
-                <th>Evolution</th>
+        <tr>
+            <th>Espece Id</th>
+            <td>{{ pokemon.idespece.id }}</td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td>{{ pokemon.idespece.nom }}</td>
+        </tr>
+        <tr>
+            <th>Surnom</th>
+            <td>{{ pokemon.surnom }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>
+                {% for row in pokemon.idespece.idType %}
+                    {{ row.type }}
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <th>Courbe XP</th>
+            <td>{{ pokemon.idespece.courbeXP }}</td>
+        </tr>
+        <tr>
+            <th>XP</th>
+            <td>{{ pokemon.xp }}</td>
+        </tr>
+        <tr>
+            <th>Niveau</th>
+            <td>{{ pokemon.niveau }}</td>
+        </tr>
+        <tr>
+            <th>Evolution</th>
+            <td>
                 {% if pokemon.idespece.evolution == 'o' %}
-                    <td>Oui</td>
+                    Oui
                 {% else %}
-                    <td>Non</td>
+                    Non
                 {% endif %}
-            </tr>
-            <tr>
-                <th>Sexe</th>
-                <td>{{ pokemon.sexe }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ pokemon.prix }}</td>
-            </tr>
-            <tr>
-                <th>A vendre</th>
-                {% if pokemon.toSell == true %}
-                    <td>Oui</td>
-                {% else %}
-                    <td>Non</td>
-                {% endif %}
-            </tr>
-            <tr>
-                <th>Heure de la dernière action</th>
-                <td>{% if pokemon.action != null %}
-                        {{ pokemon.action|date('Y-m-d H:i:s', 'Europe/Paris') }}
-                    {% endif %}</td>
-            </tr>
+            </td>
+        </tr>
+        <tr>
+            <th>Sexe</th>
+            <td>{{ pokemon.sexe }}</td>
+        </tr>
+        <tr>
+            <th>Prix</th>
+            <td>{{ pokemon.prix }}</td>
+        </tr>
+        <tr>
+            <th>A vendre</th>
+            {% if pokemon.isToSell %}
+                <td>Oui</td>
+            {% else %}
+                <td>Non</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <th>Heure de la dernière action</th>
+            <td>{% if pokemon.action != null %}
+                    {{ pokemon.action|date('Y-m-d H:i:s', 'Europe/Paris') }}
+                {% endif %}</td>
+        </tr>
         </tbody>
     </table>
 
     <button class="btn btn-lg btn-primary">
         <a
-                {% if pokemon.isRecentAction == false %}
+                {% if not pokemon.isRecentAction %}
                     href="{{ path('pokemon_training', {'id': pokemon.id}) }}"
                 {% else %}
                     style="color: grey"
@@ -88,7 +90,10 @@
 
     <a class="btn btn-primary" href="{{ path('pokemon_edit', {'id': pokemon.id}) }}">edit</a>
 
-    <a class="btn btn-primary" href="{{ path('pokemon_sell', {'id': pokemon.id}) }}">Sell</a>
+    {% if pokemon.toSell == false %}
+        <a class="btn btn-primary" href="{{ path('pokemon_sell', {'id': pokemon.id}) }}">Sell</a>
+    {% endif %}
 
     {{ include('pokemon/_delete_form.html.twig') }}
+
 {% endblock %}
