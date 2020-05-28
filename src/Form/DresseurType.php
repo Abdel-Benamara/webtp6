@@ -14,15 +14,7 @@ class DresseurType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('roles', ChoiceType::class, [
-                'choices' => [
-                    'Admin' => 'ROLE_ADMIN',
-                    'Super' => 'ROLE_SUPER_ADMIN',
-                ],
-                'expanded'  => false, // liste déroulante
-                'multiple'  => true, // choix multiple
-            ])
-            ->add('password')
+            ->add('pseudo')
         ;
     }
 

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lieu index{% endblock %}
+
+{% block body %}
+    <h1>Lieu index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lieu in lieus %}
+            <tr>
+                <td>{{ lieu.nom }}</td>
+                <td>
+                    <a href="{{ path('lieu_visit', {'id': lieu.id}) }}">visit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

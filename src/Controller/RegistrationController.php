@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Dresseur;
+use App\Entity\Especepokemon;
 use App\Entity\Pokemon;
 use App\Form\RegistrationFormType;
 use App\Security\DresseurAuthenticator;
@@ -45,14 +46,16 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
+            $espece = $this->getDoctrine()->getRepository(Especepokemon::class)->findBy(array('id' => $form->get('starter')->getData()));
+            $dresseur = $this->getDoctrine()->getRepository(Dresseur::class)->findBy(array('id' => $user->getId()));
+
             $pokemon = new Pokemon();
-            $pokemon->setIdespece($form->get('starter')->getData());
+            $pokemon->setIdespece($espece[0]);
+            $pokemon->setIddresseur($dresseur[0]);
             $pokemon->setSurnom($form->get('surnom')->getData());
-            $pokemon->setIddresseur($user->getId());
             $pokemon->setNiveau(1);
-            $pokemon->setXp(0);
-            $pokemon->setSexe('mâle');
-            $pokemon->setPrix(0);
+            $sexe = array('mâle', 'femelle');
+            $pokemon->setSexe($sexe[random_int(0, 1)]);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($pokemon);

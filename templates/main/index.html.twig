@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <h5 class="card-title">Bienvenue sur ton Pokedex</h5>
+    <h5 class="card-title">Bienvenue sur ton Pokedex <span class="badge badge-pill badge-primary">{{ dresseur.pseudo }}</span></h5>
 
     <h4 class="card-title"><span class="badge badge-pill badge-primary">{{ dresseur.money }}</span> piece(s) dans ton porte monnaie !</h4>
 
@@ -35,5 +35,7 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <a class="btn btn-primary" href="{{ path('dresseur_edit', {'id': dresseur.id}) }}">edit</a>
 
 {% endblock %}

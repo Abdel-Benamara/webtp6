@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Pokemon;
 use App\Form\PokemonType;
+use App\Form\SellPokemonType;
 use App\Repository\DresseurRepository;
 use App\Repository\PokemonRepository;
 use Doctrine\DBAL\DBALException;
@@ -110,6 +111,51 @@ class PokemonController extends AbstractController
             'pokemon' => $pokemon,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}/sell", name="pokemon_sell", methods={"GET","POST"})
+     * @param Request $request
+     * @param Pokemon $pokemon
+     * @return Response
+     */
+    public function sell(Request $request, Pokemon $pokemon): Response
+    {
+        $form = $this->createForm(SellPokemonType::class, $pokemon);
+        $form->handleRequest($request);
+
+        $pokemon->setToSell(true);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('pokemon_index');
+        }
+
+        return $this->render('pokemon/sell.html.twig', [
+            'pokemon' => $pokemon,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/buy", name="pokemon_buy_index", methods={"GET"})
+     * @return Response
+     */
+    public function buyIndex(): Response
+    {
+        // TODO
+    }
+
+    /**
+     * @Route("/{id}/buy", name="pokemon_buy", methods={"GET","POST"})
+     * @param Request $request
+     * @param Pokemon $pokemon
+     * @return Response
+     */
+    public function buy(Request $request, Pokemon $pokemon): Response
+    {
+        // TODO
     }
 
     /**

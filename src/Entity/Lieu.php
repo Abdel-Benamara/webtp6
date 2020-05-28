@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -49,7 +50,31 @@ class Lieu
      */
     public function __construct()
     {
-        $this->idtype = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idtype = new ArrayCollection();
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNom(): string
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getIdtype(): Collection
+    {
+        return $this->idtype;
     }
 
 }

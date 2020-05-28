@@ -6,7 +6,7 @@
 use Symfony\Component\DependencyInjection\Dumper\Preloader;
 
 require dirname(__DIR__, 3).'/vendor/autoload.php';
-require __DIR__.'/ContainerPbPkJUA/App_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerThegV6a/App_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -27,13 +27,16 @@ $classes[] = 'Symfony\Bridge\Monolog\Logger';
 $classes[] = 'Symfony\Component\HttpFoundation\RequestMatcher';
 $classes[] = 'Symfony\Component\DependencyInjection\ServiceLocator';
 $classes[] = 'App\Controller\DresseurController';
+$classes[] = 'App\Controller\LieuController';
 $classes[] = 'App\Controller\MainController';
 $classes[] = 'App\Controller\PokemonController';
 $classes[] = 'App\Controller\RegistrationController';
 $classes[] = 'App\Controller\SecurityController';
 $classes[] = 'App\Form\DresseurType';
+$classes[] = 'App\Form\LieuType';
 $classes[] = 'App\Form\PokemonType';
 $classes[] = 'App\Form\RegistrationFormType';
+$classes[] = 'App\Form\SellPokemonType';
 $classes[] = 'App\Repository\DresseurRepository';
 $classes[] = 'App\Repository\PokemonRepository';
 $classes[] = 'App\Security\DresseurAuthenticator';

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -59,9 +60,17 @@ class Especepokemon
     private $idtype;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idtype = new ArrayCollection();
+    }
+
+    /**
      * @return int
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -69,7 +78,7 @@ class Especepokemon
     /**
      * @return string
      */
-    public function getNom(): ?string
+    public function getNom(): string
     {
         return $this->nom;
     }
@@ -77,7 +86,7 @@ class Especepokemon
     /**
      * @return string
      */
-    public function getCourbexp(): ?string
+    public function getCourbexp(): string
     {
         return $this->courbexp;
     }
@@ -85,7 +94,7 @@ class Especepokemon
     /**
      * @return string
      */
-    public function getEvolution(): ?string
+    public function getEvolution(): string
     {
         return $this->evolution;
     }
@@ -96,14 +105,6 @@ class Especepokemon
     public function getIdtype(): Collection
     {
         return $this->idtype;
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->idtype = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 }

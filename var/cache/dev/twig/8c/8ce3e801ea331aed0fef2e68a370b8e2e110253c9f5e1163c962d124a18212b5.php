@@ -60,35 +60,39 @@ class __TwigTemplate_01c127e1e8d2942d5a5977c805c6d7973617d7217e91ef85cba880225e8
         // line 12
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_index");
         echo "\">Liste des Pokemons</a></li>
+        <li><a href=\"";
+        // line 13
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("lieu_index");
+        echo "\">Capturer des Pokemons</a></li>
     </ul>
     <div class=\"card\" style=\"width: 80%;margin: auto\">
         <div class=\"card-body\">
         ";
-        // line 16
-        $this->displayBlock('body', $context, $blocks);
         // line 17
+        $this->displayBlock('body', $context, $blocks);
+        // line 18
         echo "        ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 18
+        // line 19
         echo "        </div>
     </div>
     <footer>
         <p>Attrapez-les tous !</p>
         ";
-        // line 22
-        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 22, $this->source); })()), "user", [], "any", false, false, false, 22)) {
-            // line 23
+        // line 23
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 23, $this->source); })()), "user", [], "any", false, false, false, 23)) {
+            // line 24
             echo "            <div class=\"mb-3\">
                 You are logged in as ";
-            // line 24
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 24, $this->source); })()), "user", [], "any", false, false, false, 24), "username", [], "any", false, false, false, 24), "html", null, true);
+            // line 25
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 25, $this->source); })()), "user", [], "any", false, false, false, 25), "username", [], "any", false, false, false, 25), "html", null, true);
             echo ", <a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
             echo "\">Logout</a>
             </div>
         ";
         }
-        // line 27
+        // line 28
         echo "    </footer>
     </body>
 </html>
@@ -101,7 +105,7 @@ class __TwigTemplate_01c127e1e8d2942d5a5977c805c6d7973617d7217e91ef85cba880225e8
 
     }
 
-    // line 16
+    // line 17
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -119,7 +123,7 @@ class __TwigTemplate_01c127e1e8d2942d5a5977c805c6d7973617d7217e91ef85cba880225e8
 
     }
 
-    // line 17
+    // line 18
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -149,7 +153,7 @@ class __TwigTemplate_01c127e1e8d2942d5a5977c805c6d7973617d7217e91ef85cba880225e8
 
     public function getDebugInfo()
     {
-        return array (  123 => 17,  105 => 16,  92 => 27,  84 => 24,  81 => 23,  79 => 22,  73 => 18,  70 => 17,  68 => 16,  61 => 12,  57 => 11,  45 => 1,);
+        return array (  127 => 18,  109 => 17,  96 => 28,  88 => 25,  85 => 24,  83 => 23,  77 => 19,  74 => 18,  72 => 17,  65 => 13,  61 => 12,  57 => 11,  45 => 1,);
     }
 
     public function getSourceContext()
@@ -166,6 +170,7 @@ class __TwigTemplate_01c127e1e8d2942d5a5977c805c6d7973617d7217e91ef85cba880225e8
     <ul>
         <li><a href=\"{{ path('home') }}\">Home</a></li>
         <li><a href=\"{{ path('pokemon_index') }}\">Liste des Pokemons</a></li>
+        <li><a href=\"{{ path('lieu_index') }}\">Capturer des Pokemons</a></li>
     </ul>
     <div class=\"card\" style=\"width: 80%;margin: auto\">
         <div class=\"card-body\">

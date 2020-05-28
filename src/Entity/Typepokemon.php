@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -48,8 +49,8 @@ class Typepokemon
      */
     public function __construct()
     {
-        $this->idpokemon = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->idlieu = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idpokemon = new ArrayCollection();
+        $this->idlieu = new ArrayCollection();
     }
 
     /**

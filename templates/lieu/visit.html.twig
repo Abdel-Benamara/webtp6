@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lieu{% endblock %}
+
+{% block body %}
+    <h1>Lieu</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Nom</th>
+            <td>{{ lieu.nom }}</td>
+        </tr>
+        <tr>
+            <th>Types</th>
+            <td>
+                {% for row in lieu.idType %}
+                    {{ row.type }}
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <th>Pokemon en tête</th>
+            <td>
+                {{ form_start(capture) }}
+                {{ form_row(capture.leader) }}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-lg btn-primary"
+            {% if empty %}
+                type="button" style="color: grey"
+            {% else %}
+                type="submit"
+            {% endif %}
+    >chase</button>
+
+    {{ form_end(capture) }}
+
+    <br/>
+
+    <a class="btn btn-primary" href="{{ path('lieu_index') }}">back to list</a>
+
+{% endblock %}

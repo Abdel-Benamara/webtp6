@@ -191,7 +191,7 @@
     <parameter key="doctrine_migrations.custom_template">null</parameter>
     <parameter key="doctrine_migrations.organize_migrations">false</parameter>
     <parameter key="security.role_hierarchy.roles" type="collection"/>
-    <parameter key="security.access.denied_url">null</parameter>
+    <parameter key="security.access.denied_url">/</parameter>
     <parameter key="security.authentication.manager.erase_credentials">true</parameter>
     <parameter key="security.authentication.session_strategy.strategy">migrate</parameter>
     <parameter key="security.access.always_authenticate_before_granting">false</parameter>
@@ -309,6 +309,13 @@
         <argument type="service" id=".service_locator.pNNo5z3.App\Controller\DresseurController"/>
       </call>
     </service>
+    <service id="App\Controller\LieuController" class="App\Controller\LieuController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.pNNo5z3.App\Controller\LieuController"/>
+      </call>
+    </service>
     <service id="App\Controller\MainController" class="App\Controller\MainController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -340,10 +347,16 @@
     <service id="App\Form\DresseurType" class="App\Form\DresseurType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\LieuType" class="App\Form\LieuType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\PokemonType" class="App\Form\PokemonType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\SellPokemonType" class="App\Form\SellPokemonType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Repository\DresseurRepository" class="App\Repository\DresseurRepository" autowire="true" autoconfigure="true">
@@ -761,8 +774,10 @@
       </argument>
       <argument type="collection">
         <argument>App\Form\DresseurType</argument>
+        <argument>App\Form\LieuType</argument>
         <argument>App\Form\PokemonType</argument>
         <argument>App\Form\RegistrationFormType</argument>
+        <argument>App\Form\SellPokemonType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -1087,7 +1102,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.pnkoVlN"/>
+      <argument type="service" id=".service_locator.sxlIZ8M"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4054,7 +4069,7 @@
       <argument type="service" id="security.http_utils"/>
       <argument></argument>
       <argument type="service" id="security.authentication.entry_point" on-invalid="null"/>
-      <argument>null</argument>
+      <argument>/</argument>
       <argument type="service" id="security.access.denied_handler" on-invalid="null"/>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument>false</argument>
@@ -4289,7 +4304,7 @@
       <argument type="service" id="security.http_utils"/>
       <argument>main</argument>
       <argument type="service" id="App\Security\DresseurAuthenticator"/>
-      <argument>null</argument>
+      <argument>/</argument>
       <argument>null</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument>false</argument>
@@ -4673,6 +4688,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\DresseurController" class="App\Controller\DresseurController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\DresseurController" class="App\Controller\DresseurController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\DresseurController" class="App\Controller\DresseurController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LieuController" class="App\Controller\LieuController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LieuController" class="App\Controller\LieuController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\LieuController" class="App\Controller\LieuController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\MainController" class="App\Controller\MainController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4687,10 +4705,14 @@
     <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\DresseurType" class="App\Form\DresseurType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\DresseurType" class="App\Form\DresseurType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\LieuType" class="App\Form\LieuType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\LieuType" class="App\Form\LieuType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\PokemonType" class="App\Form\PokemonType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\PokemonType" class="App\Form\PokemonType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SellPokemonType" class="App\Form\SellPokemonType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SellPokemonType" class="App\Form\SellPokemonType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\DresseurRepository" class="App\Repository\DresseurRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\DresseurRepository" class="App\Repository\DresseurRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PokemonRepository" class="App\Repository\PokemonRepository" autowire="true" abstract="true"/>
@@ -4917,6 +4939,12 @@
         <argument key="dresseur" type="service" id=".errored..service_locator.lIw7utK.App\Entity\Dresseur"/>
       </argument>
     </service>
+    <service id=".service_locator.IHfnt0W" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="lieu" type="service" id=".errored..service_locator.IHfnt0W.App\Entity\Lieu"/>
+      </argument>
+    </service>
     <service id=".service_locator.bWZQPRp" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -4944,16 +4972,21 @@
         <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.vNki5aW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.Qjc5YZr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\DresseurController::delete" type="service" id=".service_locator.lIw7utK"/>
         <argument key="App\Controller\DresseurController::edit" type="service" id=".service_locator.lIw7utK"/>
         <argument key="App\Controller\DresseurController::index" type="service" id=".service_locator.Vp85WZT"/>
         <argument key="App\Controller\DresseurController::show" type="service" id=".service_locator.lIw7utK"/>
+        <argument key="App\Controller\LieuController::delete" type="service" id=".service_locator.IHfnt0W"/>
+        <argument key="App\Controller\LieuController::edit" type="service" id=".service_locator.IHfnt0W"/>
+        <argument key="App\Controller\LieuController::visit" type="service" id=".service_locator.IHfnt0W"/>
         <argument key="App\Controller\MainController::index" type="service" id=".service_locator.Vp85WZT"/>
+        <argument key="App\Controller\PokemonController::buy" type="service" id=".service_locator.bWZQPRp"/>
         <argument key="App\Controller\PokemonController::delete" type="service" id=".service_locator.bWZQPRp"/>
         <argument key="App\Controller\PokemonController::edit" type="service" id=".service_locator.bWZQPRp"/>
+        <argument key="App\Controller\PokemonController::sell" type="service" id=".service_locator.bWZQPRp"/>
         <argument key="App\Controller\PokemonController::show" type="service" id=".service_locator.bWZQPRp"/>
         <argument key="App\Controller\PokemonController::training" type="service" id=".service_locator.c3cTF2A"/>
         <argument key="App\Controller\RegistrationController::register" type="service" id=".service_locator.T_rYHcA"/>
@@ -4962,9 +4995,14 @@
         <argument key="App\Controller\DresseurController:edit" type="service" id=".service_locator.lIw7utK"/>
         <argument key="App\Controller\DresseurController:index" type="service" id=".service_locator.Vp85WZT"/>
         <argument key="App\Controller\DresseurController:show" type="service" id=".service_locator.lIw7utK"/>
+        <argument key="App\Controller\LieuController:delete" type="service" id=".service_locator.IHfnt0W"/>
+        <argument key="App\Controller\LieuController:edit" type="service" id=".service_locator.IHfnt0W"/>
+        <argument key="App\Controller\LieuController:visit" type="service" id=".service_locator.IHfnt0W"/>
         <argument key="App\Controller\MainController:index" type="service" id=".service_locator.Vp85WZT"/>
+        <argument key="App\Controller\PokemonController:buy" type="service" id=".service_locator.bWZQPRp"/>
         <argument key="App\Controller\PokemonController:delete" type="service" id=".service_locator.bWZQPRp"/>
         <argument key="App\Controller\PokemonController:edit" type="service" id=".service_locator.bWZQPRp"/>
+        <argument key="App\Controller\PokemonController:sell" type="service" id=".service_locator.bWZQPRp"/>
         <argument key="App\Controller\PokemonController:show" type="service" id=".service_locator.bWZQPRp"/>
         <argument key="App\Controller\PokemonController:training" type="service" id=".service_locator.c3cTF2A"/>
         <argument key="App\Controller\RegistrationController:register" type="service" id=".service_locator.T_rYHcA"/>
@@ -5030,12 +5068,14 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.pnkoVlN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.sxlIZ8M" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\DresseurType" type="service" id="App\Form\DresseurType"/>
+        <argument key="App\Form\LieuType" type="service" id="App\Form\LieuType"/>
         <argument key="App\Form\PokemonType" type="service" id="App\Form\PokemonType"/>
         <argument key="App\Form\RegistrationFormType" type="service" id="App\Form\RegistrationFormType"/>
+        <argument key="App\Form\SellPokemonType" type="service" id="App\Form\SellPokemonType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service" id="form.type.file"/>
@@ -5262,6 +5302,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.pNNo5z3" method="withContext"/>
     </service>
+    <service id=".service_locator.pNNo5z3.App\Controller\LieuController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\LieuController"/>
+      <argument>App\Controller\LieuController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.pNNo5z3" method="withContext"/>
+    </service>
     <service id=".service_locator.pNNo5z3.App\Controller\MainController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\MainController"/>
       <argument>App\Controller\MainController</argument>
@@ -5437,12 +5483,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.vNki5aW"/>
+      <argument type="service" id=".service_locator.Qjc5YZr"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.vNki5aW"/>
+      <argument type="service" id=".service_locator.Qjc5YZr"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -5453,6 +5499,7 @@
       <factory class="Symfony\Component\HttpClient\HttpClient" method="create"/>
     </service>
     <service id=".errored..service_locator.lIw7utK.App\Entity\Dresseur" class="App\Entity\Dresseur"/>
+    <service id=".errored..service_locator.IHfnt0W.App\Entity\Lieu" class="App\Entity\Lieu"/>
     <service id=".errored..service_locator.bWZQPRp.App\Entity\Pokemon" class="App\Entity\Pokemon"/>
     <service id=".errored..service_locator.c3cTF2A.App\Entity\Pokemon" class="App\Entity\Pokemon"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
@@ -5821,7 +5868,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.vNki5aW"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.Qjc5YZr"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

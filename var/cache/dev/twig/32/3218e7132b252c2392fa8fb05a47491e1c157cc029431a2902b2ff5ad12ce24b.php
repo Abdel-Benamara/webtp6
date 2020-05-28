@@ -92,44 +92,39 @@ class __TwigTemplate_95e5a18df0b66688f375b3bf0b51096bc1588ae44a0b93e2e1d2b309c3d
             <tr>
                 <th>Id</th>
                 <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
+                <th>Pseudo</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         ";
-        // line 19
+        // line 18
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["dresseurs"]) || array_key_exists("dresseurs", $context) ? $context["dresseurs"] : (function () { throw new RuntimeError('Variable "dresseurs" does not exist.', 19, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["dresseurs"]) || array_key_exists("dresseurs", $context) ? $context["dresseurs"] : (function () { throw new RuntimeError('Variable "dresseurs" does not exist.', 18, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["dresseur"]) {
-            // line 20
+            // line 19
             echo "            <tr>
                 <td>";
+            // line 20
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["dresseur"], "id", [], "any", false, false, false, 20), "html", null, true);
+            echo "</td>
+                <td>";
             // line 21
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["dresseur"], "id", [], "any", false, false, false, 21), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["dresseur"], "email", [], "any", false, false, false, 21), "html", null, true);
             echo "</td>
                 <td>";
             // line 22
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["dresseur"], "email", [], "any", false, false, false, 22), "html", null, true);
-            echo "</td>
-                <td>";
-            // line 23
-            ((twig_get_attribute($this->env, $this->source, $context["dresseur"], "roles", [], "any", false, false, false, 23)) ? (print (twig_escape_filter($this->env, json_encode(twig_get_attribute($this->env, $this->source, $context["dresseur"], "roles", [], "any", false, false, false, 23)), "html", null, true))) : (print ("")));
-            echo "</td>
-                <td>";
-            // line 24
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["dresseur"], "password", [], "any", false, false, false, 24), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["dresseur"], "pseudo", [], "any", false, false, false, 22), "html", null, true);
             echo "</td>
                 <td>
                     <a href=\"";
-            // line 26
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dresseur_show", ["id" => twig_get_attribute($this->env, $this->source, $context["dresseur"], "id", [], "any", false, false, false, 26)]), "html", null, true);
+            // line 24
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dresseur_show", ["id" => twig_get_attribute($this->env, $this->source, $context["dresseur"], "id", [], "any", false, false, false, 24)]), "html", null, true);
             echo "\">show</a>
                     <a href=\"";
-            // line 27
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dresseur_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["dresseur"], "id", [], "any", false, false, false, 27)]), "html", null, true);
+            // line 25
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dresseur_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["dresseur"], "id", [], "any", false, false, false, 25)]), "html", null, true);
             echo "\">edit</a>
                 </td>
             </tr>
@@ -137,7 +132,7 @@ class __TwigTemplate_95e5a18df0b66688f375b3bf0b51096bc1588ae44a0b93e2e1d2b309c3d
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 31
+            // line 29
             echo "            <tr>
                 <td colspan=\"5\">no records found</td>
             </tr>
@@ -146,14 +141,10 @@ class __TwigTemplate_95e5a18df0b66688f375b3bf0b51096bc1588ae44a0b93e2e1d2b309c3d
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['dresseur'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 35
+        // line 33
         echo "        </tbody>
     </table>
 
-    <a href=\"";
-        // line 38
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dresseur_new");
-        echo "\">Create new</a>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -175,7 +166,7 @@ class __TwigTemplate_95e5a18df0b66688f375b3bf0b51096bc1588ae44a0b93e2e1d2b309c3d
 
     public function getDebugInfo()
     {
-        return array (  155 => 38,  150 => 35,  141 => 31,  132 => 27,  128 => 26,  123 => 24,  119 => 23,  115 => 22,  111 => 21,  108 => 20,  103 => 19,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  145 => 33,  136 => 29,  127 => 25,  123 => 24,  118 => 22,  114 => 21,  110 => 20,  107 => 19,  102 => 18,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -192,8 +183,7 @@ class __TwigTemplate_95e5a18df0b66688f375b3bf0b51096bc1588ae44a0b93e2e1d2b309c3d
             <tr>
                 <th>Id</th>
                 <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
+                <th>Pseudo</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -202,8 +192,7 @@ class __TwigTemplate_95e5a18df0b66688f375b3bf0b51096bc1588ae44a0b93e2e1d2b309c3d
             <tr>
                 <td>{{ dresseur.id }}</td>
                 <td>{{ dresseur.email }}</td>
-                <td>{{ dresseur.roles ? dresseur.roles|json_encode : '' }}</td>
-                <td>{{ dresseur.password }}</td>
+                <td>{{ dresseur.pseudo }}</td>
                 <td>
                     <a href=\"{{ path('dresseur_show', {'id': dresseur.id}) }}\">show</a>
                     <a href=\"{{ path('dresseur_edit', {'id': dresseur.id}) }}\">edit</a>
@@ -217,7 +206,6 @@ class __TwigTemplate_95e5a18df0b66688f375b3bf0b51096bc1588ae44a0b93e2e1d2b309c3d
         </tbody>
     </table>
 
-    <a href=\"{{ path('dresseur_new') }}\">Create new</a>
 {% endblock %}
 ", "dresseur/index.html.twig", "/Users/abdelbenamara/Symfony-projects/webtp6/templates/dresseur/index.html.twig");
     }

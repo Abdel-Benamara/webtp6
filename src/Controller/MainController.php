@@ -36,10 +36,4 @@ class MainController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/test", name="test")
-     */
-    public function test(){
-
-    }
 }

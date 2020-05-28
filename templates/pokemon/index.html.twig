@@ -7,12 +7,12 @@
 
     <table class="table">
         <thead>
-            <tr>
-                <th>Pokedex Id</th>
-                <th>Nom</th>
-                <th>Surnom</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Pokedex Id</th>
+            <th>Nom</th>
+            <th>Surnom</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for pokemon in pokemon %}
@@ -24,6 +24,10 @@
                     <a href="{{ path('pokemon_show', {'id': pokemon.id}) }}">Show</a>
                     -
                     <a href="{{ path('pokemon_edit', {'id': pokemon.id}) }}">Edit</a>
+                    {% if pokemon.toSell == false %}
+                        -
+                        <a href="{{ path('pokemon_sell', {'id': pokemon.id}) }}">Sell</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

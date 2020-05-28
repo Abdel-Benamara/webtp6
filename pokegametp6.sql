@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  mer. 27 mai 2020 à 23:48
+-- Généré le :  jeu. 28 mai 2020 à 15:27
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.4.2
 
@@ -293,6 +293,7 @@ INSERT INTO `capture` (`idLieu`, `idType`) VALUES
 CREATE TABLE `dresseur` (
   `id` int(11) NOT NULL,
   `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pseudo` varchar(90) COLLATE utf8mb4_unicode_ci NOT NULL,
   `roles` json NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `money` int(11) NOT NULL
@@ -302,10 +303,11 @@ CREATE TABLE `dresseur` (
 -- Déchargement des données de la table `dresseur`
 --
 
-INSERT INTO `dresseur` (`id`, `email`, `roles`, `password`, `money`) VALUES
-(0, 'admin@mail.com', '[\"ROLE_ADMIN\"]', '$2y$13$A1zWmjgaoxXOC0oUe0ccROgQAzscqxdITDwsCPA8lz7Dvc8bdTjLy', 55000),
-(1, 'j1@mail.com', '[]', '$2y$13$qz8AUZ1RoKQ5MSnVS9WDPeSx.JyyhEjukmTJ6y6zy7EflDAjX5slu', 5000),
-(2, 'j2@mail.com', '[]', '$2y$13$vl235wxPSn2y8DR5WJK1r.kchrlVarPd.nlW4m.GIJif.Zm94JoAi', 5000);
+INSERT INTO `dresseur` (`id`, `email`, `pseudo`, `roles`, `password`, `money`) VALUES
+(0, 'admin@mail.com', 'admin', '[\"ROLE_ADMIN\"]', '$2y$13$A1zWmjgaoxXOC0oUe0ccROgQAzscqxdITDwsCPA8lz7Dvc8bdTjLy', 55000),
+(1, 'j1@mail.com', 'j1', '[]', '$2y$13$qz8AUZ1RoKQ5MSnVS9WDPeSx.JyyhEjukmTJ6y6zy7EflDAjX5slu', 5000),
+(2, 'j2@mail.com', 'j2', '[]', '$2y$13$vl235wxPSn2y8DR5WJK1r.kchrlVarPd.nlW4m.GIJif.Zm94JoAi', 5000),
+(3, 'j3@mail.com', 'j3', '[]', '$2y$13$2G7pQvyNAFMMG44o5J4EaetoZB2ZG.R6LJa4TioyWYaOQXqQgc7/.', 5000);
 
 -- --------------------------------------------------------
 
@@ -529,23 +531,35 @@ INSERT INTO `migration_versions` (`version`, `executed_at`) VALUES
 CREATE TABLE `pokemon` (
   `id` int(11) NOT NULL,
   `surnom` varchar(25) NOT NULL,
-  `idDresseur` int(11) NOT NULL,
-  `idEspece` int(11) NOT NULL,
-  `xp` int(11) NOT NULL,
+  `idDresseur` int(11) DEFAULT NULL,
+  `idEspece` int(11) DEFAULT NULL,
+  `xp` int(11) NOT NULL DEFAULT '0',
   `niveau` int(11) NOT NULL,
   `sexe` varchar(25) NOT NULL,
-  `prix` int(11) NOT NULL,
-  `action` datetime DEFAULT NULL
+  `prix` int(11) NOT NULL DEFAULT '0',
+  `action` datetime DEFAULT NULL,
+  `toSell` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `pokemon`
 --
 
-INSERT INTO `pokemon` (`id`, `surnom`, `idDresseur`, `idEspece`, `xp`, `niveau`, `sexe`, `prix`, `action`) VALUES
-(1, 'Lulu', 0, 1, 0, 1, 'mâle', 0, NULL),
-(2, '', 1, 4, 122, 9, 'mâle', 0, '2020-05-27 23:29:22'),
-(3, 'Toto', 2, 7, 75, 5, 'mâle', 0, '2020-05-27 23:42:03');
+INSERT INTO `pokemon` (`id`, `surnom`, `idDresseur`, `idEspece`, `xp`, `niveau`, `sexe`, `prix`, `action`, `toSell`) VALUES
+(1, 'Lulu', 0, 1, 54, 3, 'mâle', 0, '2020-05-28 08:39:50', 0),
+(2, '', 1, 4, 138, 9, 'mâle', 0, '2020-05-28 08:36:27', 0),
+(3, 'Toto', 2, 7, 75, 5, 'mâle', 0, '2020-05-28 15:25:24', 0),
+(4, '', 3, 4, 3, 4, 'mâle', 0, '2020-05-28 14:55:27', 0),
+(5, '', 3, 95, 0, 1, 'femelle', 100, NULL, 1),
+(6, '', 3, 37, 0, 1, 'femelle', 0, '2020-05-28 14:56:14', 0),
+(7, '', 3, 81, 0, 1, 'mâle', 0, '2020-05-28 14:57:19', 0),
+(8, '', 3, 143, 0, 1, 'femelle', 0, '2020-05-28 14:57:41', 0),
+(9, '', 3, 53, 0, 1, 'mâle', 250, NULL, 1),
+(10, '', 2, 52, 0, 1, 'mâle', 125, '2020-05-28 15:25:38', 1),
+(11, '', 2, 111, 0, 1, 'femelle', 0, '2020-05-28 15:25:59', 0),
+(12, '', 2, 107, 0, 1, 'femelle', 0, '2020-05-28 15:26:17', 0),
+(13, '', 2, 17, 0, 1, 'femelle', 0, '2020-05-28 15:26:37', 0),
+(14, '', 2, 91, 0, 1, 'femelle', 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -591,23 +605,24 @@ INSERT INTO `typePokemon` (`id`, `type`) VALUES
 --
 ALTER TABLE `bindPokeType`
   ADD PRIMARY KEY (`idPokemon`,`idType`),
-  ADD KEY `idPokemon` (`idPokemon`),
-  ADD KEY `idType` (`idType`);
+  ADD KEY `IDX_15515A237265FB01` (`idPokemon`),
+  ADD KEY `IDX_15515A23FF2309B7` (`idType`);
 
 --
 -- Index pour la table `capture`
 --
 ALTER TABLE `capture`
   ADD PRIMARY KEY (`idLieu`,`idType`),
-  ADD KEY `idLieu` (`idLieu`) USING BTREE,
-  ADD KEY `idType` (`idType`);
+  ADD KEY `IDX_8BFEA6E55CAA23C7` (`idLieu`) USING BTREE,
+  ADD KEY `IDX_8BFEA6E5FF2309B7` (`idType`);
 
 --
 -- Index pour la table `dresseur`
 --
 ALTER TABLE `dresseur`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_77EA2FC6E7927C74` (`email`);
+  ADD UNIQUE KEY `UNIQ_77EA2FC6E7927C74` (`email`),
+  ADD UNIQUE KEY `pseudo` (`pseudo`);
 
 --
 -- Index pour la table `especePokemon`
@@ -649,7 +664,7 @@ ALTER TABLE `typePokemon`
 -- AUTO_INCREMENT pour la table `dresseur`
 --
 ALTER TABLE `dresseur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `especePokemon`
@@ -667,7 +682,7 @@ ALTER TABLE `lieu`
 -- AUTO_INCREMENT pour la table `pokemon`
 --
 ALTER TABLE `pokemon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `typePokemon`

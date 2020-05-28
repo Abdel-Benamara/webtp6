@@ -37,7 +37,7 @@ class Pokemon
      *
      * @ORM\Column(name="xp", type="integer", nullable=false)
      */
-    private $xp;
+    private $xp = 0;
 
     /**
      * @var int
@@ -58,7 +58,7 @@ class Pokemon
      *
      * @ORM\Column(name="prix", type="integer", nullable=false)
      */
-    private $prix;
+    private $prix = 0;
 
     /**
      * @var DateTime|null
@@ -66,6 +66,13 @@ class Pokemon
      * @ORM\Column(name="action", type="datetime", nullable=true)
      */
     private $action;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="toSell", type="boolean", nullable=false)
+     */
+    private $toSell = '0';
 
     /**
      * @var Dresseur
@@ -144,6 +151,14 @@ class Pokemon
     }
 
     /**
+     * @return bool
+     */
+    public function isToSell(): bool
+    {
+        return $this->toSell;
+    }
+
+    /**
      * @return Dresseur
      */
     public function getIddresseur(): ?Dresseur
@@ -218,17 +233,26 @@ class Pokemon
 
     public function isRecentAction(): bool
     {
-        if(is_null($this->action)){
+        if ($this->isToSell())
+            return true;
+
+        if(is_null($this->action))
             return false;
-        }
 
         $dif = $this->action->diff(new DateTime('now'),true);
 
-        if($dif->format('%h') > 0){
+        if($dif->format('%h') > 0)
             return false;
-        }
 
         return true;
+    }
+
+    /**
+     * @param bool $toSell
+     */
+    public function setToSell(bool $toSell): void
+    {
+        $this->toSell = $toSell;
     }
 
     /**
@@ -295,8 +319,7 @@ class Pokemon
 
         $this->xp = round($results, 0, PHP_ROUND_HALF_UP);
 
-        $date = new DateTime('now');
-        $this->setAction($date);
+        $this->setAction(new DateTime('now'));
 
         return true;
     }

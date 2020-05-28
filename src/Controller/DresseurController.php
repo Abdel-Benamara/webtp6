@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/dresseur")
@@ -19,6 +20,7 @@ class DresseurController extends AbstractController
 {
     /**
      * @Route("/", name="dresseur_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN", message="No access! Get out!")
      * @param DresseurRepository $dresseurRepository
      * @return Response
      */
@@ -26,31 +28,6 @@ class DresseurController extends AbstractController
     {
         return $this->render('dresseur/index.html.twig', [
             'dresseurs' => $dresseurRepository->findAll(),
-        ]);
-    }
-
-    /**
-     * @Route("/new", name="dresseur_new", methods={"GET","POST"})
-     * @param Request $request
-     * @return Response
-     */
-    public function new(Request $request): Response
-    {
-        $dresseur = new Dresseur();
-        $form = $this->createForm(DresseurType::class, $dresseur);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($dresseur);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('dresseur_index');
-        }
-
-        return $this->render('dresseur/new.html.twig', [
-            'dresseur' => $dresseur,
-            'form' => $form->createView(),
         ]);
     }
 
@@ -74,6 +51,10 @@ class DresseurController extends AbstractController
      */
     public function edit(Request $request, Dresseur $dresseur): Response
     {
+        if ($this->getUser()->getId() != $request->get('id')) {
+            return $this->redirectToRoute('home');
+        }
+
         $form = $this->createForm(DresseurType::class, $dresseur);
         $form->handleRequest($request);
 
@@ -91,6 +72,7 @@ class DresseurController extends AbstractController
 
     /**
      * @Route("/{id}", name="dresseur_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN", message="No access! Get out!")
      * @param Request $request
      * @param Dresseur $dresseur
      * @return Response

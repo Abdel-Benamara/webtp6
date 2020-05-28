@@ -92,10 +92,10 @@ class __TwigTemplate_dc0013b35b2647da3beb8ca679fffac43142fe1dfcf9df490d5889dbc0d
         echo twig_include($this->env, $context, "dresseur/_form.html.twig", ["button_label" => "Update"]);
         echo "
 
-    <a href=\"";
+    <a class=\"btn btn-primary\" href=\"";
         // line 10
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dresseur_index");
-        echo "\">back to list</a>
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
+        echo "\">home</a>
 
     ";
         // line 12
@@ -136,7 +136,7 @@ class __TwigTemplate_dc0013b35b2647da3beb8ca679fffac43142fe1dfcf9df490d5889dbc0d
 
     {{ include('dresseur/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href=\"{{ path('dresseur_index') }}\">back to list</a>
+    <a class=\"btn btn-primary\" href=\"{{ path('home') }}\">home</a>
 
     {{ include('dresseur/_delete_form.html.twig') }}
 {% endblock %}

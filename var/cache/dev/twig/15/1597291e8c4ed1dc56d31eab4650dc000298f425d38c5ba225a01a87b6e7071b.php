@@ -89,12 +89,12 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
 
     <table class=\"table\">
         <thead>
-            <tr>
-                <th>Pokedex Id</th>
-                <th>Nom</th>
-                <th>Surnom</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Pokedex Id</th>
+            <th>Nom</th>
+            <th>Surnom</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         ";
@@ -127,13 +127,25 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
             // line 26
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["pokemon"], "id", [], "any", false, false, false, 26)]), "html", null, true);
             echo "\">Edit</a>
-                </td>
+                    ";
+            // line 27
+            if (0 === twig_compare(twig_get_attribute($this->env, $this->source, $context["pokemon"], "toSell", [], "any", false, false, false, 27), false)) {
+                // line 28
+                echo "                        -
+                        <a href=\"";
+                // line 29
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_sell", ["id" => twig_get_attribute($this->env, $this->source, $context["pokemon"], "id", [], "any", false, false, false, 29)]), "html", null, true);
+                echo "\">Sell</a>
+                    ";
+            }
+            // line 31
+            echo "                </td>
             </tr>
         ";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 30
+            // line 34
             echo "            <tr>
                 <td colspan=\"8\">no records found</td>
             </tr>
@@ -142,7 +154,7 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pokemon'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 34
+        // line 38
         echo "        </tbody>
     </table>
 
@@ -167,7 +179,7 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
 
     public function getDebugInfo()
     {
-        return array (  146 => 34,  137 => 30,  128 => 26,  123 => 24,  118 => 22,  114 => 21,  110 => 20,  107 => 19,  102 => 18,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  158 => 38,  149 => 34,  142 => 31,  137 => 29,  134 => 28,  132 => 27,  128 => 26,  123 => 24,  118 => 22,  114 => 21,  110 => 20,  107 => 19,  102 => 18,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -181,12 +193,12 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
 
     <table class=\"table\">
         <thead>
-            <tr>
-                <th>Pokedex Id</th>
-                <th>Nom</th>
-                <th>Surnom</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Pokedex Id</th>
+            <th>Nom</th>
+            <th>Surnom</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for pokemon in pokemon %}
@@ -198,6 +210,10 @@ class __TwigTemplate_458c03c932c09925c876df367dd3d0e72e0497e10ff1843da6639e27ef5
                     <a href=\"{{ path('pokemon_show', {'id': pokemon.id}) }}\">Show</a>
                     -
                     <a href=\"{{ path('pokemon_edit', {'id': pokemon.id}) }}\">Edit</a>
+                    {% if pokemon.toSell == false %}
+                        -
+                        <a href=\"{{ path('pokemon_sell', {'id': pokemon.id}) }}\">Sell</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

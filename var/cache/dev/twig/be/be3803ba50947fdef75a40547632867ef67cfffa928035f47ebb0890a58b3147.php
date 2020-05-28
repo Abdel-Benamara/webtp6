@@ -86,7 +86,10 @@ class __TwigTemplate_69d97f4c05ccbecfcb4f3a6b557233b07d17813ab2a4b9e8669c7807fc6
 
         // line 6
         echo "
-    <h5 class=\"card-title\">Bienvenue sur ton Pokedex</h5>
+    <h5 class=\"card-title\">Bienvenue sur ton Pokedex <span class=\"badge badge-pill badge-primary\">";
+        // line 7
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["dresseur"]) || array_key_exists("dresseur", $context) ? $context["dresseur"] : (function () { throw new RuntimeError('Variable "dresseur" does not exist.', 7, $this->source); })()), "pseudo", [], "any", false, false, false, 7), "html", null, true);
+        echo "</span></h5>
 
     <h4 class=\"card-title\"><span class=\"badge badge-pill badge-primary\">";
         // line 9
@@ -151,6 +154,11 @@ class __TwigTemplate_69d97f4c05ccbecfcb4f3a6b557233b07d17813ab2a4b9e8669c7807fc6
         echo "        </tbody>
     </table>
 
+    <a class=\"btn btn-primary\" href=\"";
+        // line 39
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dresseur_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["dresseur"]) || array_key_exists("dresseur", $context) ? $context["dresseur"] : (function () { throw new RuntimeError('Variable "dresseur" does not exist.', 39, $this->source); })()), "id", [], "any", false, false, false, 39)]), "html", null, true);
+        echo "\">edit</a>
+
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -172,7 +180,7 @@ class __TwigTemplate_69d97f4c05ccbecfcb4f3a6b557233b07d17813ab2a4b9e8669c7807fc6
 
     public function getDebugInfo()
     {
-        return array (  151 => 36,  142 => 32,  134 => 29,  130 => 28,  127 => 27,  122 => 26,  108 => 15,  103 => 13,  98 => 11,  93 => 9,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  159 => 39,  154 => 36,  145 => 32,  137 => 29,  133 => 28,  130 => 27,  125 => 26,  111 => 15,  106 => 13,  101 => 11,  96 => 9,  91 => 7,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -183,7 +191,7 @@ class __TwigTemplate_69d97f4c05ccbecfcb4f3a6b557233b07d17813ab2a4b9e8669c7807fc6
 
 {% block body %}
 
-    <h5 class=\"card-title\">Bienvenue sur ton Pokedex</h5>
+    <h5 class=\"card-title\">Bienvenue sur ton Pokedex <span class=\"badge badge-pill badge-primary\">{{ dresseur.pseudo }}</span></h5>
 
     <h4 class=\"card-title\"><span class=\"badge badge-pill badge-primary\">{{ dresseur.money }}</span> piece(s) dans ton porte monnaie !</h4>
 
@@ -214,6 +222,8 @@ class __TwigTemplate_69d97f4c05ccbecfcb4f3a6b557233b07d17813ab2a4b9e8669c7807fc6
         {% endfor %}
         </tbody>
     </table>
+
+    <a class=\"btn btn-primary\" href=\"{{ path('dresseur_edit', {'id': dresseur.id}) }}\">edit</a>
 
 {% endblock %}
 ", "main/index.html.twig", "/Users/abdelbenamara/Symfony-projects/webtp6/templates/main/index.html.twig");

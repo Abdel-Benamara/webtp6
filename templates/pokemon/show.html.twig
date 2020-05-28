@@ -56,6 +56,14 @@
                 <td>{{ pokemon.prix }}</td>
             </tr>
             <tr>
+                <th>A vendre</th>
+                {% if pokemon.toSell == true %}
+                    <td>Oui</td>
+                {% else %}
+                    <td>Non</td>
+                {% endif %}
+            </tr>
+            <tr>
                 <th>Heure de la dernière action</th>
                 <td>{% if pokemon.action != null %}
                         {{ pokemon.action|date('Y-m-d H:i:s', 'Europe/Paris') }}
@@ -79,6 +87,8 @@
     <a class="btn btn-primary" href="{{ path('pokemon_index') }}">back to list</a>
 
     <a class="btn btn-primary" href="{{ path('pokemon_edit', {'id': pokemon.id}) }}">edit</a>
+
+    <a class="btn btn-primary" href="{{ path('pokemon_sell', {'id': pokemon.id}) }}">Sell</a>
 
     {{ include('pokemon/_delete_form.html.twig') }}
 {% endblock %}
