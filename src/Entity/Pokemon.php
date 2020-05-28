@@ -222,18 +222,12 @@ class Pokemon
             return false;
         }
 
-        $now = new DateTime('now');
-        $dif = $this->action->diff($now,true);
-        $difInHour = 0;
-        if($dif->format('%a') > 0){
-            $difInHour += (int) $dif->format('%a');
-        }
+        $dif = $this->action->diff(new DateTime('now'),true);
+
         if($dif->format('%h') > 0){
-            $difInHour += (int) $dif->format('%h');
-        }
-        if($difInHour > 0){
             return false;
         }
+
         return true;
     }
 

@@ -112,29 +112,24 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
             </tr>
             <tr>
                 <th>Type</th>
-            ";
-        // line 24
+                <td>
+                    ";
+        // line 25
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 24, $this->source); })()), "idespece", [], "any", false, false, false, 24), "idType", [], "any", false, false, false, 24));
-        $context['_iterated'] = false;
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 25, $this->source); })()), "idespece", [], "any", false, false, false, 25), "idType", [], "any", false, false, false, 25));
         foreach ($context['_seq'] as $context["_key"] => $context["row"]) {
-            // line 25
-            echo "                    <td>";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["row"], "type", [], "any", false, false, false, 25), "html", null, true);
-            echo "</td>
-            ";
-            $context['_iterated'] = true;
-        }
-        if (!$context['_iterated']) {
-            // line 27
-            echo "                    <td colspan=\"2\">no records found</td>
-            ";
+            // line 26
+            echo "                        ";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["row"], "type", [], "any", false, false, false, 26), "html", null, true);
+            echo "
+                    ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['row'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 29
-        echo "            </tr>
+        // line 28
+        echo "                </td>
+            </tr>
             <tr>
                 <th>Courbe XP</th>
                 <td>";
@@ -258,7 +253,7 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
 
     public function getDebugInfo()
     {
-        return array (  238 => 83,  233 => 81,  228 => 79,  221 => 74,  217 => 72,  211 => 70,  209 => 69,  200 => 62,  194 => 61,  192 => 60,  185 => 56,  178 => 52,  173 => 49,  169 => 47,  165 => 45,  163 => 44,  156 => 40,  149 => 36,  142 => 32,  137 => 29,  130 => 27,  122 => 25,  117 => 24,  110 => 20,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  233 => 83,  228 => 81,  223 => 79,  216 => 74,  212 => 72,  206 => 70,  204 => 69,  195 => 62,  189 => 61,  187 => 60,  180 => 56,  173 => 52,  168 => 49,  164 => 47,  160 => 45,  158 => 44,  151 => 40,  144 => 36,  137 => 32,  131 => 28,  122 => 26,  118 => 25,  110 => 20,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -286,11 +281,11 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
             </tr>
             <tr>
                 <th>Type</th>
-            {% for row in pokemon.idespece.idType %}
-                    <td>{{ row.type }}</td>
-            {% else %}
-                    <td colspan=\"2\">no records found</td>
-            {% endfor %}
+                <td>
+                    {% for row in pokemon.idespece.idType %}
+                        {{ row.type }}
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th>Courbe XP</th>

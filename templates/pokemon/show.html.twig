@@ -21,11 +21,11 @@
             </tr>
             <tr>
                 <th>Type</th>
-            {% for row in pokemon.idespece.idType %}
-                    <td>{{ row.type }}</td>
-            {% else %}
-                    <td colspan="2">no records found</td>
-            {% endfor %}
+                <td>
+                    {% for row in pokemon.idespece.idType %}
+                        {{ row.type }}
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th>Courbe XP</th>
