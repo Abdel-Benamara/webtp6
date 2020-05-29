@@ -5,7 +5,9 @@
 {% block body %}
     <h1>Sell Pokemon</h1>
 
-    {{ include('pokemon/_form.html.twig', {'button_label': 'Update'}) }}
+    <a onsubmit="return confirm('Attention : une fois votre Pokemon en vente vous ne pourrez pas revenir sur votre décision ni changer son prix et votre Pokemon ne pourra plus s\'entraîner ou chasser.');">
+        {{ include('pokemon/_form.html.twig', {'button_label': 'Sell'}) }}
+    </a>
 
     <a class="btn btn-primary" href="{{ path('pokemon_index') }}">back to list</a>
     <a class="btn btn-primary" href="{{ path('pokemon_show', {'id': pokemon.id}) }}">show</a>

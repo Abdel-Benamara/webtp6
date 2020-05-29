@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>TP 6 : Le Pokegame avec Symfony</title>
-        <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-    </head>
-    <body>
-    <h1>Le Pokedex</h1>
+<head>
+    <meta charset="UTF-8">
+    <title>TP 6 : Le Pokegame avec Symfony</title>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+</head>
+<body>
+<h1>Le Pokegame</h1>
+{% if app.user %}
     <ul>
         <li><a href="{{ path('home') }}">Home</a></li>
         <li><a href="{{ path('pokemon_index') }}">Liste des Pokemons</a></li>
         <li><a href="{{ path('lieu_index') }}">Capturer des Pokemons</a></li>
         <li><a href="{{ path('pokemon_shop') }}">Acheter des Pokemons</a></li>
     </ul>
-    <div class="card" style="width: 80%;margin: auto">
-        <div class="card-body">
+{% else %}
+    <br />
+{% endif %}
+<div class="card" style="width: 80%;margin: auto">
+    <div class="card-body">
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
-        </div>
     </div>
-    <footer>
-        <p>Attrapez-les tous !</p>
-        {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-            </div>
-        {% endif %}
-    </footer>
-    </body>
+</div>
+<footer>
+    <br />
+    <p>Attrapez-les tous !</p>
+    {% if app.user %}
+        <div class="mb-3">
+            Vous êtes connecté en tant que <span class="badge badge-pill badge-primary">{{ app.user.pseudo }}</span>
+            <br />
+            Cliquez ici pour vous déconnecter : <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+</footer>
+</body>
 </html>

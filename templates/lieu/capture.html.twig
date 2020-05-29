@@ -12,31 +12,37 @@
             <td>{{ lieu.nom }}</td>
         </tr>
         <tr>
-            <th>Types</th>
+            <th>Types de Pokemon</th>
             <td>
                 {% for row in lieu.idType %}
                     {{ row.type }}
                 {% endfor %}
             </td>
         </tr>
-        <tr>
-            <th>Pokemon en tête</th>
-            <td>
-                {{ form_start(capture) }}
-                {{ form_row(capture.leader) }}
-            </td>
-        </tr>
+        {% if not noleader %}
+            <tr>
+                <th>Chasser avec</th>
+                <td>
+                    {{ form_start(capture) }}
+                    {{ form_label(capture.leader) }}
+                    {{ form_widget(capture.leader) }}
+                </td>
+            </tr>
+        {% endif %}
         </tbody>
     </table>
+
     <button class="btn btn-lg btn-primary"
-            {% if empty %}
+            {% if noleader %}
                 type="button" style="color: grey"
             {% else %}
                 type="submit"
             {% endif %}
     >chase</button>
 
-    {{ form_end(capture) }}
+    {% if not noleader %}
+        {{ form_end(capture) }}
+    {% endif %}
 
     <br/>
 

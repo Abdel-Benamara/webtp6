@@ -7,6 +7,7 @@ use App\Entity\Especepokemon;
 use App\Entity\Pokemon;
 use App\Form\RegistrationFormType;
 use App\Security\DresseurAuthenticator;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,9 +24,14 @@ class RegistrationController extends AbstractController
      * @param GuardAuthenticatorHandler $guardHandler
      * @param DresseurAuthenticator $authenticator
      * @return Response
+     * @throws Exception
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, DresseurAuthenticator $authenticator): Response
     {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('home');
+        }
+
         $user = new Dresseur();
         $user->setMoney(5000);
         $form = $this->createForm(RegistrationFormType::class, $user);

@@ -91,16 +91,16 @@ class __TwigTemplate_dc0013b35b2647da3beb8ca679fffac43142fe1dfcf9df490d5889dbc0d
         // line 8
         echo twig_include($this->env, $context, "dresseur/_form.html.twig", ["button_label" => "Update"]);
         echo "
+    ";
+        // line 9
+        echo twig_include($this->env, $context, "dresseur/_delete_form.html.twig");
+        echo "
 
     <a class=\"btn btn-primary\" href=\"";
-        // line 10
+        // line 11
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
         echo "\">home</a>
 
-    ";
-        // line 12
-        echo twig_include($this->env, $context, "dresseur/_delete_form.html.twig");
-        echo "
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -122,7 +122,7 @@ class __TwigTemplate_dc0013b35b2647da3beb8ca679fffac43142fe1dfcf9df490d5889dbc0d
 
     public function getDebugInfo()
     {
-        return array (  102 => 12,  97 => 10,  92 => 8,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  101 => 11,  96 => 9,  92 => 8,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -135,10 +135,10 @@ class __TwigTemplate_dc0013b35b2647da3beb8ca679fffac43142fe1dfcf9df490d5889dbc0d
     <h1>Edit Dresseur</h1>
 
     {{ include('dresseur/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('dresseur/_delete_form.html.twig') }}
 
     <a class=\"btn btn-primary\" href=\"{{ path('home') }}\">home</a>
 
-    {{ include('dresseur/_delete_form.html.twig') }}
 {% endblock %}
 ", "dresseur/edit.html.twig", "/Users/abdelbenamara/Symfony-projects/webtp6/templates/dresseur/edit.html.twig");
     }

@@ -21,7 +21,7 @@ return [
     'dresseur_delete' => [['id'], ['_controller' => 'App\\Controller\\DresseurController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/dresseur']], [], []],
     'lieu_index' => [[], ['_controller' => 'App\\Controller\\LieuController::index'], [], [['text', '/lieu/']], [], []],
     'lieu_new' => [[], ['_controller' => 'App\\Controller\\LieuController::new'], [], [['text', '/lieu/new']], [], []],
-    'lieu_visit' => [['id'], ['_controller' => 'App\\Controller\\LieuController::visit'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/lieu']], [], []],
+    'capture' => [['id'], ['_controller' => 'App\\Controller\\LieuController::capture'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/lieu']], [], []],
     'lieu_edit' => [['id'], ['_controller' => 'App\\Controller\\LieuController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/lieu']], [], []],
     'lieu_delete' => [['id'], ['_controller' => 'App\\Controller\\LieuController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/lieu']], [], []],
     'home' => [[], ['_controller' => 'App\\Controller\\MainController::index'], [], [['text', '/']], [], []],

@@ -9,8 +9,9 @@
         <thead>
         <tr>
             <th>Pokedex Id</th>
-            <th>Nom</th>
+            <th>Espece</th>
             <th>Surnom</th>
+            <th>Niveau</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -20,19 +21,37 @@
                 <td>{{ pokemon.idEspece.id }}</td>
                 <td>{{ pokemon.idEspece.nom }}</td>
                 <td>{{ pokemon.surnom }}</td>
+                <td>{{ pokemon.niveau }}</td>
                 <td>
                     <a href="{{ path('pokemon_show', {'id': pokemon.id}) }}">Show</a>
                     -
                     <a href="{{ path('pokemon_edit', {'id': pokemon.id}) }}">Edit</a>
-                    {% if pokemon.toSell == false %}
+                    {% if not pokemon.isToSell %}
+                        -
+                        <a
+                                {% if pokemon.isRecentAction or pokemon.niveau == 100 %}
+                                    style="color: grey"
+                                {% else %}
+                                    href="{{ path('pokemon_training', {'id': pokemon.id}) }}"
+                                {% endif %}
+                        >
+                            {% if pokemon.niveau == 100 %}
+                                Max Level
+                            {% else %}
+                                Training
+                            {% endif %}
+                        </a>
                         -
                         <a href="{{ path('pokemon_sell', {'id': pokemon.id}) }}">Sell</a>
+                    {% else %}
+                        -
+                        <a style="color: grey">For sale</a>
                     {% endif %}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">Aucun pokemon ne correspond à la requête</td>
+                <td colspan="8">Aucun pokemon dans ce Pokedex</td>
             </tr>
         {% endfor %}
         </tbody>

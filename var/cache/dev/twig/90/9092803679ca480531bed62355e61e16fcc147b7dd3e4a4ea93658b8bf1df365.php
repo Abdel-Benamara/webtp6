@@ -101,13 +101,14 @@ class __TwigTemplate_730320d5168f3f8e63da72498243904035bcc3b4652ff91924a2be0b821
 
     <a class=\"btn btn-primary\" href=\"";
         // line 17
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dresseur_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["dresseur"]) || array_key_exists("dresseur", $context) ? $context["dresseur"] : (function () { throw new RuntimeError('Variable "dresseur" does not exist.', 17, $this->source); })()), "id", [], "any", false, false, false, 17)]), "html", null, true);
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
+        echo "\">home</a>
+
+    <a class=\"btn btn-primary\" href=\"";
+        // line 19
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dresseur_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["dresseur"]) || array_key_exists("dresseur", $context) ? $context["dresseur"] : (function () { throw new RuntimeError('Variable "dresseur" does not exist.', 19, $this->source); })()), "id", [], "any", false, false, false, 19)]), "html", null, true);
         echo "\">edit</a>
 
-    ";
-        // line 19
-        echo twig_include($this->env, $context, "dresseur/_delete_form.html.twig");
-        echo "
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -150,9 +151,10 @@ class __TwigTemplate_730320d5168f3f8e63da72498243904035bcc3b4652ff91924a2be0b821
         </tbody>
     </table>
 
+    <a class=\"btn btn-primary\" href=\"{{ path('home') }}\">home</a>
+
     <a class=\"btn btn-primary\" href=\"{{ path('dresseur_edit', {'id': dresseur.id}) }}\">edit</a>
 
-    {{ include('dresseur/_delete_form.html.twig') }}
 {% endblock %}
 ", "dresseur/show.html.twig", "/Users/abdelbenamara/Symfony-projects/webtp6/templates/dresseur/show.html.twig");
     }

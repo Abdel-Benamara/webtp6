@@ -74,7 +74,7 @@ return [
         190 => [[['_route' => 'dresseur_show', '_controller' => 'App\\Controller\\DresseurController::show'], ['id'], ['GET' => 0], null, false, true, null]],
         203 => [[['_route' => 'dresseur_edit', '_controller' => 'App\\Controller\\DresseurController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         211 => [[['_route' => 'dresseur_delete', '_controller' => 'App\\Controller\\DresseurController::delete'], ['id'], ['DELETE' => 0], null, false, true, null]],
-        237 => [[['_route' => 'lieu_visit', '_controller' => 'App\\Controller\\LieuController::visit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        237 => [[['_route' => 'capture', '_controller' => 'App\\Controller\\LieuController::capture'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
         250 => [[['_route' => 'lieu_edit', '_controller' => 'App\\Controller\\LieuController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         258 => [[['_route' => 'lieu_delete', '_controller' => 'App\\Controller\\LieuController::delete'], ['id'], ['DELETE' => 0], null, false, true, null]],
         287 => [[['_route' => 'pokemon_show', '_controller' => 'App\\Controller\\PokemonController::show'], ['id'], ['GET' => 0], null, false, true, null]],

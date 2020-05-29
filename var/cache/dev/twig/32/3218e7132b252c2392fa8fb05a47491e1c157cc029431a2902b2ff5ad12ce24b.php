@@ -121,18 +121,19 @@ class __TwigTemplate_95e5a18df0b66688f375b3bf0b51096bc1588ae44a0b93e2e1d2b309c3d
                     <a href=\"";
             // line 24
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dresseur_show", ["id" => twig_get_attribute($this->env, $this->source, $context["dresseur"], "id", [], "any", false, false, false, 24)]), "html", null, true);
-            echo "\">show</a>
+            echo "\">Show</a>
+                    -
                     <a href=\"";
-            // line 25
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dresseur_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["dresseur"], "id", [], "any", false, false, false, 25)]), "html", null, true);
-            echo "\">edit</a>
+            // line 26
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dresseur_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["dresseur"], "id", [], "any", false, false, false, 26)]), "html", null, true);
+            echo "\">Edit</a>
                 </td>
             </tr>
         ";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 29
+            // line 30
             echo "            <tr>
                 <td colspan=\"5\">no records found</td>
             </tr>
@@ -141,7 +142,7 @@ class __TwigTemplate_95e5a18df0b66688f375b3bf0b51096bc1588ae44a0b93e2e1d2b309c3d
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['dresseur'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 33
+        // line 34
         echo "        </tbody>
     </table>
 
@@ -166,7 +167,7 @@ class __TwigTemplate_95e5a18df0b66688f375b3bf0b51096bc1588ae44a0b93e2e1d2b309c3d
 
     public function getDebugInfo()
     {
-        return array (  145 => 33,  136 => 29,  127 => 25,  123 => 24,  118 => 22,  114 => 21,  110 => 20,  107 => 19,  102 => 18,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  146 => 34,  137 => 30,  128 => 26,  123 => 24,  118 => 22,  114 => 21,  110 => 20,  107 => 19,  102 => 18,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -194,8 +195,9 @@ class __TwigTemplate_95e5a18df0b66688f375b3bf0b51096bc1588ae44a0b93e2e1d2b309c3d
                 <td>{{ dresseur.email }}</td>
                 <td>{{ dresseur.pseudo }}</td>
                 <td>
-                    <a href=\"{{ path('dresseur_show', {'id': dresseur.id}) }}\">show</a>
-                    <a href=\"{{ path('dresseur_edit', {'id': dresseur.id}) }}\">edit</a>
+                    <a href=\"{{ path('dresseur_show', {'id': dresseur.id}) }}\">Show</a>
+                    -
+                    <a href=\"{{ path('dresseur_edit', {'id': dresseur.id}) }}\">Edit</a>
                 </td>
             </tr>
         {% else %}

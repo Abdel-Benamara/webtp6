@@ -130,11 +130,11 @@ class __TwigTemplate_69d97f4c05ccbecfcb4f3a6b557233b07d17813ab2a4b9e8669c7807fc6
             echo "            <tr>
                 <td>";
             // line 28
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["row"], "type", [], "array", false, false, false, 28), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["row"], "type", [], "any", false, false, false, 28), "html", null, true);
             echo "</td>
                 <td>";
             // line 29
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["row"], "nb", [], "array", false, false, false, 29), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["row"], "nb", [], "any", false, false, false, 29), "html", null, true);
             echo "</td>
             </tr>
         ";
@@ -212,8 +212,8 @@ class __TwigTemplate_69d97f4c05ccbecfcb4f3a6b557233b07d17813ab2a4b9e8669c7807fc6
         <tbody>
         {% for row in stats %}
             <tr>
-                <td>{{ row['type'] }}</td>
-                <td>{{ row['nb'] }}</td>
+                <td>{{ row.type }}</td>
+                <td>{{ row.nb }}</td>
             </tr>
         {% else %}
             <tr>

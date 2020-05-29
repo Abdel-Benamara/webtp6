@@ -14,7 +14,8 @@
         </tbody>
     </table>
 
+    <a class="btn btn-primary" href="{{ path('home') }}">home</a>
+
     <a class="btn btn-primary" href="{{ path('dresseur_edit', {'id': dresseur.id}) }}">edit</a>
 
-    {{ include('dresseur/_delete_form.html.twig') }}
 {% endblock %}

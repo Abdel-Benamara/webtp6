@@ -59,21 +59,6 @@ class DresseurRepository extends ServiceEntityRepository implements PasswordUpgr
         return $stmt->fetchAll();
     }
 
-    /**
-     * @param $idDresseur
-     * @return mixed[] Returns an array of PokemonType objects
-     * @throws DBALException
-     */
-    public function getNbEvo($idDresseur){
-        $conn = $this->getEntityManager()->getConnection();
-        $sql = 'SELECT COUNT(p.id) AS nbEvo FROM pokemon AS p, especePokemon AS e, dresseur AS d WHERE d.id = :num AND d.id = p.idDresseur AND p.idEspece = e.id AND e.evolution = \'o\'';
-
-        $stmt = $conn->prepare($sql);
-        $stmt->bindValue(':num', $idDresseur, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetch()['nbEvo'];
-    }
-
     // /**
     //  * @return Dresseur[] Returns an array of Dresseur objects
     //  */

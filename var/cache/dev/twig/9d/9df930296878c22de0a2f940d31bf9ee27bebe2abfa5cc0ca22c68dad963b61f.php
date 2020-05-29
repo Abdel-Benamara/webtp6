@@ -42,17 +42,45 @@ class __TwigTemplate_6ca34bcea7460b37616bfe8afbb944e8fa68a2cb08d098dde83398db1d4
         // line 1
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 1, $this->source); })()), 'form_start');
         echo "
+<table class=\"table\">
+    <tbody>
     ";
-        // line 2
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 2, $this->source); })()), 'widget');
-        echo "
-    <button class=\"btn\">";
-        // line 3
-        echo twig_escape_filter($this->env, (((isset($context["button_label"]) || array_key_exists("button_label", $context))) ? (_twig_default_filter((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new RuntimeError('Variable "button_label" does not exist.', 3, $this->source); })()), "Save")) : ("Save")), "html", null, true);
+        // line 4
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 4, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["component"]) {
+            // line 5
+            echo "        ";
+            if (0 !== twig_compare($context["component"], twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 5, $this->source); })()), "_token", [], "any", false, false, false, 5))) {
+                // line 6
+                echo "            <tr>
+                <th>";
+                // line 7
+                echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($context["component"], 'label');
+                echo "</th>
+                <td>";
+                // line 8
+                echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($context["component"], 'widget');
+                echo "</td>
+            </tr>
+        ";
+            }
+            // line 11
+            echo "    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['component'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 12
+        echo "    </tbody>
+</table>
+<button class=\"btn\">";
+        // line 14
+        echo twig_escape_filter($this->env, (((isset($context["button_label"]) || array_key_exists("button_label", $context))) ? (_twig_default_filter((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new RuntimeError('Variable "button_label" does not exist.', 14, $this->source); })()), "Save")) : ("Save")), "html", null, true);
         echo "</button>
 ";
-        // line 4
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 4, $this->source); })()), 'form_end');
+        // line 15
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 15, $this->source); })()), 'form_end');
         echo "
 ";
         
@@ -75,14 +103,25 @@ class __TwigTemplate_6ca34bcea7460b37616bfe8afbb944e8fa68a2cb08d098dde83398db1d4
 
     public function getDebugInfo()
     {
-        return array (  55 => 4,  51 => 3,  47 => 2,  43 => 1,);
+        return array (  83 => 15,  79 => 14,  75 => 12,  69 => 11,  63 => 8,  59 => 7,  56 => 6,  53 => 5,  49 => 4,  43 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class=\"btn\">{{ button_label|default('Save') }}</button>
+<table class=\"table\">
+    <tbody>
+    {% for component in form %}
+        {% if component != form._token %}
+            <tr>
+                <th>{{ form_label(component) }}</th>
+                <td>{{ form_widget(component) }}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+<button class=\"btn\">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
 ", "dresseur/_form.html.twig", "/Users/abdelbenamara/Symfony-projects/webtp6/templates/dresseur/_form.html.twig");
     }

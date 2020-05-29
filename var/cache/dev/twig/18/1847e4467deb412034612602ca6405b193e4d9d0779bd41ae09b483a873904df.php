@@ -91,20 +91,20 @@ class __TwigTemplate_150e866ef7c899fbdd244cd75560290d2c32490099c060a5473fdf565dd
         // line 8
         echo twig_include($this->env, $context, "pokemon/_form.html.twig", ["button_label" => "Update"]);
         echo "
+    ";
+        // line 9
+        echo twig_include($this->env, $context, "pokemon/_delete_form.html.twig");
+        echo "
 
     <a class=\"btn btn-primary\" href=\"";
-        // line 10
+        // line 11
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_index");
         echo "\">back to list</a>
     <a class=\"btn btn-primary\" href=\"";
-        // line 11
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_show", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 11, $this->source); })()), "id", [], "any", false, false, false, 11)]), "html", null, true);
+        // line 12
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_show", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 12, $this->source); })()), "id", [], "any", false, false, false, 12)]), "html", null, true);
         echo "\">show</a>
 
-    ";
-        // line 13
-        echo twig_include($this->env, $context, "pokemon/_delete_form.html.twig");
-        echo "
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -126,7 +126,7 @@ class __TwigTemplate_150e866ef7c899fbdd244cd75560290d2c32490099c060a5473fdf565dd
 
     public function getDebugInfo()
     {
-        return array (  106 => 13,  101 => 11,  97 => 10,  92 => 8,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  105 => 12,  101 => 11,  96 => 9,  92 => 8,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -139,11 +139,11 @@ class __TwigTemplate_150e866ef7c899fbdd244cd75560290d2c32490099c060a5473fdf565dd
     <h1>Edit Pokemon</h1>
 
     {{ include('pokemon/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('pokemon/_delete_form.html.twig') }}
 
     <a class=\"btn btn-primary\" href=\"{{ path('pokemon_index') }}\">back to list</a>
     <a class=\"btn btn-primary\" href=\"{{ path('pokemon_show', {'id': pokemon.id}) }}\">show</a>
 
-    {{ include('pokemon/_delete_form.html.twig') }}
 {% endblock %}
 ", "pokemon/edit.html.twig", "/Users/abdelbenamara/Symfony-projects/webtp6/templates/pokemon/edit.html.twig");
     }

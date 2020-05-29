@@ -276,7 +276,7 @@ class Pokemon
      */
     public function getTrained(): bool
     {
-        if($this->isRecentAction()){
+        if($this->isRecentAction() or $this->niveau == 100){
             return false;
         }
 
@@ -317,7 +317,10 @@ class Pokemon
                 break;
         }
 
-        $this->xp = round($results, 0, PHP_ROUND_HALF_UP);
+        if ($this->niveau == 100)
+            $this->xp = 0;
+        else
+            $this->xp = round($results, 0, PHP_ROUND_HALF_UP);
 
         $this->setAction(new DateTime('now'));
 

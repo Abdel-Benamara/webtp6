@@ -64,20 +64,20 @@ class LieuController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="lieu_visit", methods={"GET","POST"})
+     * @Route("/{id}", name="capture", methods={"GET","POST"})
      * @param Request $request
      * @param Lieu $lieu
      * @return Response
      * @throws Exception
      */
-    public function visit(Request $request, Lieu $lieu): Response
+    public function capture(Request $request, Lieu $lieu): Response
     {
         $pokemons = $this->getDoctrine()->getRepository(Pokemon::class)->findBy(array('iddresseur' => $this->getUser()->getId()));
 
         $leader = array();
         foreach ($pokemons as $poke) {
             if (!$poke->isRecentAction())
-                $leader[$poke->getId() . ' - ' . $poke->getIdEspece()->getNom() . ' - ' . $poke->getSurnom()] = $poke;
+                $leader[' lvl ' .$poke->getNiveau() . ' - ' . $poke->getIdEspece()->getNom() . ' - ' . $poke->getSurnom()] = $poke;
         }
 
         $capture = $this->createFormBuilder()
@@ -122,10 +122,10 @@ class LieuController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        return $this->render('lieu/visit.html.twig', [
+        return $this->render('lieu/capture.html.twig', [
             'lieu' => $lieu,
             'capture' => $capture->createView(),
-            'empty' => empty($leader),
+            'noleader' => empty($leader),
         ]);
     }
 

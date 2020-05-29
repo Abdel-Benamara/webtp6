@@ -22,10 +22,16 @@ class MainController extends AbstractController
     public function index(DresseurRepository $dresseurRepository)
     {
         $idDresseur = $this->getUser()->getId();
+        $pokemons = $this->getDoctrine()->getRepository(Pokemon::class)->findBy(array('iddresseur' => $idDresseur));
 
-        $total = sizeof($this->getDoctrine()->getRepository(Pokemon::class)->findBy(array('iddresseur' => $idDresseur)));
+        $total = sizeof($pokemons);
+
         $stats = $dresseurRepository->getStatsByType($idDresseur);
-        $nbEvo = $dresseurRepository->getNbEvo($idDresseur);
+
+        $nbEvo = 0;
+        foreach ($pokemons as $poke)
+            if ($poke->getIdEspece()->getEvolution() == 'o')
+                $nbEvo++;
 
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',

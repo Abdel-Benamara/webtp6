@@ -90,14 +90,14 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
     <table class=\"table\">
         <tbody>
         <tr>
-            <th>Espece Id</th>
+            <th>Pokedex Id</th>
             <td>";
         // line 12
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 12, $this->source); })()), "idespece", [], "any", false, false, false, 12), "id", [], "any", false, false, false, 12), "html", null, true);
         echo "</td>
         </tr>
         <tr>
-            <th>Nom</th>
+            <th>Espece</th>
             <td>";
         // line 16
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 16, $this->source); })()), "idespece", [], "any", false, false, false, 16), "nom", [], "any", false, false, false, 16), "html", null, true);
@@ -214,53 +214,95 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
         </tbody>
     </table>
 
-    <button class=\"btn btn-lg btn-primary\">
-        <a
-                ";
-        // line 79
-        if ( !twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 79, $this->source); })()), "isRecentAction", [], "any", false, false, false, 79)) {
+    ";
+        // line 77
+        if (0 === twig_compare(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 77, $this->source); })()), "user", [], "any", false, false, false, 77), "id", [], "any", false, false, false, 77), twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 77, $this->source); })()), "iddresseur", [], "any", false, false, false, 77), "id", [], "any", false, false, false, 77))) {
+            // line 78
+            echo "        <button class=\"btn btn-lg btn-primary\">
+            <a
+                    ";
             // line 80
-            echo "                    href=\"";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_training", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 80, $this->source); })()), "id", [], "any", false, false, false, 80)]), "html", null, true);
-            echo "\"
+            if ((twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 80, $this->source); })()), "isRecentAction", [], "any", false, false, false, 80) || 0 === twig_compare(twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 80, $this->source); })()), "niveau", [], "any", false, false, false, 80), 100))) {
+                // line 81
+                echo "                        style=\"color: grey\"
+                    ";
+            } else {
+                // line 83
+                echo "                        href=\"";
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_training", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 83, $this->source); })()), "id", [], "any", false, false, false, 83)]), "html", null, true);
+                echo "\"
+                    ";
+            }
+            // line 85
+            echo "            >
                 ";
+            // line 86
+            if (0 === twig_compare(twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 86, $this->source); })()), "niveau", [], "any", false, false, false, 86), 100)) {
+                // line 87
+                echo "                    Max Level
+                ";
+            } else {
+                // line 89
+                echo "                    Training
+                ";
+            }
+            // line 91
+            echo "            </a>
+        </button>
+
+        <br />
+
+        <a class=\"btn btn-primary\" href=\"";
+            // line 96
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_index");
+            echo "\">back to list</a>
+
+        <a class=\"btn btn-primary\" href=\"";
+            // line 98
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 98, $this->source); })()), "id", [], "any", false, false, false, 98)]), "html", null, true);
+            echo "\">edit</a>
+
+        ";
+            // line 100
+            if (0 === twig_compare(twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 100, $this->source); })()), "toSell", [], "any", false, false, false, 100), false)) {
+                // line 101
+                echo "            <a class=\"btn btn-primary\" href=\"";
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_sell", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 101, $this->source); })()), "id", [], "any", false, false, false, 101)]), "html", null, true);
+                echo "\">Sell</a>
+        ";
+            }
+            // line 103
+            echo "    ";
         } else {
-            // line 82
-            echo "                    style=\"color: grey\"
+            // line 104
+            echo "        <a class=\"btn btn-lg btn-primary\"
                 ";
-        }
-        // line 84
-        echo "        >Training</a>
-    </button>
+            // line 105
+            if (-1 === twig_compare(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 105, $this->source); })()), "user", [], "any", false, false, false, 105), "money", [], "any", false, false, false, 105), twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 105, $this->source); })()), "prix", [], "any", false, false, false, 105))) {
+                // line 106
+                echo "                    style=\"color: grey\"
+                ";
+            } else {
+                // line 108
+                echo "                    href=\"";
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_buy", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 108, $this->source); })()), "id", [], "any", false, false, false, 108)]), "html", null, true);
+                echo "\"
+                    onclick=\"return confirm('Are you sure you want to buy this Pokemon ?');\"
+                ";
+            }
+            // line 111
+            echo "        >Buy</a>
 
-    <br />
+        <br />
 
-    <a class=\"btn btn-primary\" href=\"";
-        // line 89
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_index");
-        echo "\">back to list</a>
-
-    <a class=\"btn btn-primary\" href=\"";
-        // line 91
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 91, $this->source); })()), "id", [], "any", false, false, false, 91)]), "html", null, true);
-        echo "\">edit</a>
-
-    ";
-        // line 93
-        if (0 === twig_compare(twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 93, $this->source); })()), "toSell", [], "any", false, false, false, 93), false)) {
-            // line 94
-            echo "        <a class=\"btn btn-primary\" href=\"";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_sell", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["pokemon"]) || array_key_exists("pokemon", $context) ? $context["pokemon"] : (function () { throw new RuntimeError('Variable "pokemon" does not exist.', 94, $this->source); })()), "id", [], "any", false, false, false, 94)]), "html", null, true);
-            echo "\">Sell</a>
+        <a class=\"btn btn-primary\" href=\"";
+            // line 115
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_shop");
+            echo "\">back to shop</a>
     ";
         }
-        // line 96
-        echo "    
-    ";
-        // line 97
-        echo twig_include($this->env, $context, "pokemon/_delete_form.html.twig");
+        // line 117
         echo "
-
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -282,7 +324,7 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
 
     public function getDebugInfo()
     {
-        return array (  261 => 97,  258 => 96,  252 => 94,  250 => 93,  245 => 91,  240 => 89,  233 => 84,  229 => 82,  223 => 80,  221 => 79,  212 => 72,  206 => 71,  204 => 70,  199 => 67,  195 => 65,  191 => 63,  189 => 62,  182 => 58,  175 => 54,  169 => 50,  165 => 48,  161 => 46,  159 => 45,  151 => 40,  144 => 36,  137 => 32,  131 => 28,  122 => 26,  118 => 25,  110 => 20,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  305 => 117,  300 => 115,  294 => 111,  287 => 108,  283 => 106,  281 => 105,  278 => 104,  275 => 103,  269 => 101,  267 => 100,  262 => 98,  257 => 96,  250 => 91,  246 => 89,  242 => 87,  240 => 86,  237 => 85,  231 => 83,  227 => 81,  225 => 80,  221 => 78,  219 => 77,  212 => 72,  206 => 71,  204 => 70,  199 => 67,  195 => 65,  191 => 63,  189 => 62,  182 => 58,  175 => 54,  169 => 50,  165 => 48,  161 => 46,  159 => 45,  151 => 40,  144 => 36,  137 => 32,  131 => 28,  122 => 26,  118 => 25,  110 => 20,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -297,11 +339,11 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
     <table class=\"table\">
         <tbody>
         <tr>
-            <th>Espece Id</th>
+            <th>Pokedex Id</th>
             <td>{{ pokemon.idespece.id }}</td>
         </tr>
         <tr>
-            <th>Nom</th>
+            <th>Espece</th>
             <td>{{ pokemon.idespece.nom }}</td>
         </tr>
         <tr>
@@ -363,27 +405,46 @@ class __TwigTemplate_e7304f21010b4440501d97d9fff76c81a5350eb916b14d8a7e83e940a8a
         </tbody>
     </table>
 
-    <button class=\"btn btn-lg btn-primary\">
-        <a
-                {% if not pokemon.isRecentAction %}
-                    href=\"{{ path('pokemon_training', {'id': pokemon.id}) }}\"
+    {% if app.user.id == pokemon.iddresseur.id %}
+        <button class=\"btn btn-lg btn-primary\">
+            <a
+                    {% if pokemon.isRecentAction or pokemon.niveau == 100 %}
+                        style=\"color: grey\"
+                    {% else %}
+                        href=\"{{ path('pokemon_training', {'id': pokemon.id}) }}\"
+                    {% endif %}
+            >
+                {% if pokemon.niveau == 100 %}
+                    Max Level
                 {% else %}
-                    style=\"color: grey\"
+                    Training
                 {% endif %}
-        >Training</a>
-    </button>
+            </a>
+        </button>
 
-    <br />
+        <br />
 
-    <a class=\"btn btn-primary\" href=\"{{ path('pokemon_index') }}\">back to list</a>
+        <a class=\"btn btn-primary\" href=\"{{ path('pokemon_index') }}\">back to list</a>
 
-    <a class=\"btn btn-primary\" href=\"{{ path('pokemon_edit', {'id': pokemon.id}) }}\">edit</a>
+        <a class=\"btn btn-primary\" href=\"{{ path('pokemon_edit', {'id': pokemon.id}) }}\">edit</a>
 
-    {% if pokemon.toSell == false %}
-        <a class=\"btn btn-primary\" href=\"{{ path('pokemon_sell', {'id': pokemon.id}) }}\">Sell</a>
+        {% if pokemon.toSell == false %}
+            <a class=\"btn btn-primary\" href=\"{{ path('pokemon_sell', {'id': pokemon.id}) }}\">Sell</a>
+        {% endif %}
+    {% else %}
+        <a class=\"btn btn-lg btn-primary\"
+                {% if app.user.money < pokemon.prix %}
+                    style=\"color: grey\"
+                {% else %}
+                    href=\"{{ path('pokemon_buy', {'id': pokemon.id}) }}\"
+                    onclick=\"return confirm('Are you sure you want to buy this Pokemon ?');\"
+                {% endif %}
+        >Buy</a>
+
+        <br />
+
+        <a class=\"btn btn-primary\" href=\"{{ path('pokemon_shop') }}\">back to shop</a>
     {% endif %}
-    
-    {{ include('pokemon/_delete_form.html.twig') }}
 
 {% endblock %}
 ", "pokemon/show.html.twig", "/Users/abdelbenamara/Symfony-projects/webtp6/templates/pokemon/show.html.twig");

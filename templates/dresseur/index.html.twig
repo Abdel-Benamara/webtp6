@@ -21,8 +21,9 @@
                 <td>{{ dresseur.email }}</td>
                 <td>{{ dresseur.pseudo }}</td>
                 <td>
-                    <a href="{{ path('dresseur_show', {'id': dresseur.id}) }}">show</a>
-                    <a href="{{ path('dresseur_edit', {'id': dresseur.id}) }}">edit</a>
+                    <a href="{{ path('dresseur_show', {'id': dresseur.id}) }}">Show</a>
+                    -
+                    <a href="{{ path('dresseur_edit', {'id': dresseur.id}) }}">Edit</a>
                 </td>
             </tr>
         {% else %}

@@ -44,61 +44,76 @@ class __TwigTemplate_01c127e1e8d2942d5a5977c805c6d7973617d7217e91ef85cba880225e8
         // line 1
         echo "<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset=\"UTF-8\">
-        <title>TP 6 : Le Pokegame avec Symfony</title>
-        <link rel=\"stylesheet\" href=\"https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css\" integrity=\"sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX\" crossorigin=\"anonymous\">
-    </head>
-    <body>
-    <h1>Le Pokedex</h1>
-    <ul>
+<head>
+    <meta charset=\"UTF-8\">
+    <title>TP 6 : Le Pokegame avec Symfony</title>
+    <link rel=\"stylesheet\" href=\"https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css\" integrity=\"sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX\" crossorigin=\"anonymous\">
+</head>
+<body>
+<h1>Le Pokegame</h1>
+";
+        // line 10
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 10, $this->source); })()), "user", [], "any", false, false, false, 10)) {
+            // line 11
+            echo "    <ul>
         <li><a href=\"";
-        // line 11
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
-        echo "\">Home</a></li>
+            // line 12
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
+            echo "\">Home</a></li>
         <li><a href=\"";
-        // line 12
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_index");
-        echo "\">Liste des Pokemons</a></li>
+            // line 13
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_index");
+            echo "\">Liste des Pokemons</a></li>
         <li><a href=\"";
-        // line 13
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("lieu_index");
-        echo "\">Capturer des Pokemons</a></li>
+            // line 14
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("lieu_index");
+            echo "\">Capturer des Pokemons</a></li>
         <li><a href=\"";
-        // line 14
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_shop");
-        echo "\">Acheter des Pokemons</a></li>
+            // line 15
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pokemon_shop");
+            echo "\">Acheter des Pokemons</a></li>
     </ul>
-    <div class=\"card\" style=\"width: 80%;margin: auto\">
-        <div class=\"card-body\">
+";
+        } else {
+            // line 18
+            echo "    <br />
+";
+        }
+        // line 20
+        echo "<div class=\"card\" style=\"width: 80%;margin: auto\">
+    <div class=\"card-body\">
         ";
-        // line 18
+        // line 22
         $this->displayBlock('body', $context, $blocks);
-        // line 19
+        // line 23
         echo "        ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 20
-        echo "        </div>
-    </div>
-    <footer>
-        <p>Attrapez-les tous !</p>
-        ";
         // line 24
-        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 24, $this->source); })()), "user", [], "any", false, false, false, 24)) {
-            // line 25
-            echo "            <div class=\"mb-3\">
-                You are logged in as ";
-            // line 26
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 26, $this->source); })()), "user", [], "any", false, false, false, 26), "username", [], "any", false, false, false, 26), "html", null, true);
-            echo ", <a href=\"";
+        echo "    </div>
+</div>
+<footer>
+    <br />
+    <p>Attrapez-les tous !</p>
+    ";
+        // line 29
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 29, $this->source); })()), "user", [], "any", false, false, false, 29)) {
+            // line 30
+            echo "        <div class=\"mb-3\">
+            Vous êtes connecté en tant que <span class=\"badge badge-pill badge-primary\">";
+            // line 31
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 31, $this->source); })()), "user", [], "any", false, false, false, 31), "pseudo", [], "any", false, false, false, 31), "html", null, true);
+            echo "</span>
+            <br />
+            Cliquez ici pour vous déconnecter : <a href=\"";
+            // line 33
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
             echo "\">Logout</a>
-            </div>
-        ";
+        </div>
+    ";
         }
-        // line 29
-        echo "    </footer>
-    </body>
+        // line 36
+        echo "</footer>
+</body>
 </html>
 ";
         
@@ -109,7 +124,7 @@ class __TwigTemplate_01c127e1e8d2942d5a5977c805c6d7973617d7217e91ef85cba880225e8
 
     }
 
-    // line 18
+    // line 22
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -127,7 +142,7 @@ class __TwigTemplate_01c127e1e8d2942d5a5977c805c6d7973617d7217e91ef85cba880225e8
 
     }
 
-    // line 19
+    // line 23
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -157,41 +172,48 @@ class __TwigTemplate_01c127e1e8d2942d5a5977c805c6d7973617d7217e91ef85cba880225e8
 
     public function getDebugInfo()
     {
-        return array (  131 => 19,  113 => 18,  100 => 29,  92 => 26,  89 => 25,  87 => 24,  81 => 20,  78 => 19,  76 => 18,  69 => 14,  65 => 13,  61 => 12,  57 => 11,  45 => 1,);
+        return array (  146 => 23,  128 => 22,  115 => 36,  109 => 33,  104 => 31,  101 => 30,  99 => 29,  92 => 24,  89 => 23,  87 => 22,  83 => 20,  79 => 18,  73 => 15,  69 => 14,  65 => 13,  61 => 12,  58 => 11,  56 => 10,  45 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset=\"UTF-8\">
-        <title>TP 6 : Le Pokegame avec Symfony</title>
-        <link rel=\"stylesheet\" href=\"https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css\" integrity=\"sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX\" crossorigin=\"anonymous\">
-    </head>
-    <body>
-    <h1>Le Pokedex</h1>
+<head>
+    <meta charset=\"UTF-8\">
+    <title>TP 6 : Le Pokegame avec Symfony</title>
+    <link rel=\"stylesheet\" href=\"https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css\" integrity=\"sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX\" crossorigin=\"anonymous\">
+</head>
+<body>
+<h1>Le Pokegame</h1>
+{% if app.user %}
     <ul>
         <li><a href=\"{{ path('home') }}\">Home</a></li>
         <li><a href=\"{{ path('pokemon_index') }}\">Liste des Pokemons</a></li>
         <li><a href=\"{{ path('lieu_index') }}\">Capturer des Pokemons</a></li>
         <li><a href=\"{{ path('pokemon_shop') }}\">Acheter des Pokemons</a></li>
     </ul>
-    <div class=\"card\" style=\"width: 80%;margin: auto\">
-        <div class=\"card-body\">
+{% else %}
+    <br />
+{% endif %}
+<div class=\"card\" style=\"width: 80%;margin: auto\">
+    <div class=\"card-body\">
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
-        </div>
     </div>
-    <footer>
-        <p>Attrapez-les tous !</p>
-        {% if app.user %}
-            <div class=\"mb-3\">
-                You are logged in as {{ app.user.username }}, <a href=\"{{ path('app_logout') }}\">Logout</a>
-            </div>
-        {% endif %}
-    </footer>
-    </body>
+</div>
+<footer>
+    <br />
+    <p>Attrapez-les tous !</p>
+    {% if app.user %}
+        <div class=\"mb-3\">
+            Vous êtes connecté en tant que <span class=\"badge badge-pill badge-primary\">{{ app.user.pseudo }}</span>
+            <br />
+            Cliquez ici pour vous déconnecter : <a href=\"{{ path('app_logout') }}\">Logout</a>
+        </div>
+    {% endif %}
+</footer>
+</body>
 </html>
 ", "base.html.twig", "/Users/abdelbenamara/Symfony-projects/webtp6/templates/base.html.twig");
     }

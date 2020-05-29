@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>Nom</th>
+                <th>Types de Pokemon</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -17,12 +18,17 @@
             <tr>
                 <td>{{ lieu.nom }}</td>
                 <td>
-                    <a href="{{ path('lieu_visit', {'id': lieu.id}) }}">visit</a>
+                    {% for row in lieu.idType %}
+                        {{ row.type }}
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{{ path('capture', {'id': lieu.id}) }}">Explore</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Aucun lieu à visiter</td>
             </tr>
         {% endfor %}
         </tbody>

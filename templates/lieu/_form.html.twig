@@ -1,4 +1,15 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<table class="table">
+    <tbody>
+    {% for component in form %}
+        {% if component != form._token %}
+            <tr>
+                <th>{{ form_label(component) }}</th>
+                <td>{{ form_widget(component) }}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+<button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

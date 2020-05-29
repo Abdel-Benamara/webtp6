@@ -4972,16 +4972,16 @@
         <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.Qjc5YZr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.57_skG6" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\DresseurController::delete" type="service" id=".service_locator.lIw7utK"/>
         <argument key="App\Controller\DresseurController::edit" type="service" id=".service_locator.lIw7utK"/>
         <argument key="App\Controller\DresseurController::index" type="service" id=".service_locator.Vp85WZT"/>
         <argument key="App\Controller\DresseurController::show" type="service" id=".service_locator.lIw7utK"/>
+        <argument key="App\Controller\LieuController::capture" type="service" id=".service_locator.IHfnt0W"/>
         <argument key="App\Controller\LieuController::delete" type="service" id=".service_locator.IHfnt0W"/>
         <argument key="App\Controller\LieuController::edit" type="service" id=".service_locator.IHfnt0W"/>
-        <argument key="App\Controller\LieuController::visit" type="service" id=".service_locator.IHfnt0W"/>
         <argument key="App\Controller\MainController::index" type="service" id=".service_locator.Vp85WZT"/>
         <argument key="App\Controller\PokemonController::buy" type="service" id=".service_locator.bWZQPRp"/>
         <argument key="App\Controller\PokemonController::delete" type="service" id=".service_locator.bWZQPRp"/>
@@ -4995,9 +4995,9 @@
         <argument key="App\Controller\DresseurController:edit" type="service" id=".service_locator.lIw7utK"/>
         <argument key="App\Controller\DresseurController:index" type="service" id=".service_locator.Vp85WZT"/>
         <argument key="App\Controller\DresseurController:show" type="service" id=".service_locator.lIw7utK"/>
+        <argument key="App\Controller\LieuController:capture" type="service" id=".service_locator.IHfnt0W"/>
         <argument key="App\Controller\LieuController:delete" type="service" id=".service_locator.IHfnt0W"/>
         <argument key="App\Controller\LieuController:edit" type="service" id=".service_locator.IHfnt0W"/>
-        <argument key="App\Controller\LieuController:visit" type="service" id=".service_locator.IHfnt0W"/>
         <argument key="App\Controller\MainController:index" type="service" id=".service_locator.Vp85WZT"/>
         <argument key="App\Controller\PokemonController:buy" type="service" id=".service_locator.bWZQPRp"/>
         <argument key="App\Controller\PokemonController:delete" type="service" id=".service_locator.bWZQPRp"/>
@@ -5483,12 +5483,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.Qjc5YZr"/>
+      <argument type="service" id=".service_locator.57_skG6"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.Qjc5YZr"/>
+      <argument type="service" id=".service_locator.57_skG6"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -5868,7 +5868,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.Qjc5YZr"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.57_skG6"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

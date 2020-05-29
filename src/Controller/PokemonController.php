@@ -68,6 +68,15 @@ class PokemonController extends AbstractController
      */
     public function show(Pokemon $pokemon): Response
     {
+        if (!$pokemon->isToSell() and $this->getUser()->getId() != $pokemon->getIddresseur()->getId()) {
+            $admin = false;
+            foreach ($this->getUser()->getRoles() as $role)
+                if ($role == "ROLE_ADMIN")
+                    $admin = true;
+            if (!$admin)
+                return $this->redirectToRoute('home');
+        }
+
         return $this->render('pokemon/show.html.twig', [
             'pokemon' => $pokemon,
         ]);
@@ -82,6 +91,15 @@ class PokemonController extends AbstractController
      */
     public function training(Pokemon $pokemon, PokemonRepository $pokemonRepository): Response
     {
+        if ($this->getUser()->getId() != $pokemon->getIddresseur()->getId()) {
+            $admin = false;
+            foreach ($this->getUser()->getRoles() as $role)
+                if ($role == "ROLE_ADMIN")
+                    $admin = true;
+            if (!$admin)
+                return $this->redirectToRoute('home');
+        }
+
         $pokemon->getTrained($pokemonRepository);
         
         $entityManager = $this->getDoctrine()->getManager();
@@ -98,6 +116,15 @@ class PokemonController extends AbstractController
      */
     public function edit(Request $request, Pokemon $pokemon): Response
     {
+        if ($this->getUser()->getId() != $pokemon->getIddresseur()->getId()) {
+            $admin = false;
+            foreach ($this->getUser()->getRoles() as $role)
+                if ($role == "ROLE_ADMIN")
+                    $admin = true;
+                if (!$admin)
+                    return $this->redirectToRoute('home');
+        }
+
         $form = $this->createForm(PokemonType::class, $pokemon);
         $form->handleRequest($request);
 
@@ -121,6 +148,15 @@ class PokemonController extends AbstractController
      */
     public function sell(Request $request, Pokemon $pokemon): Response
     {
+        if ($this->getUser()->getId() != $pokemon->getIddresseur()->getId()) {
+            $admin = false;
+            foreach ($this->getUser()->getRoles() as $role)
+                if ($role == "ROLE_ADMIN")
+                    $admin = true;
+            if (!$admin)
+                return $this->redirectToRoute('home');
+        }
+
         $form = $this->createForm(SellPokemonType::class, $pokemon);
         $form->handleRequest($request);
 
@@ -164,6 +200,10 @@ class PokemonController extends AbstractController
      */
     public function buy(Pokemon $pokemon): Response
     {
+        if ($this->getUser()->getMoney() < $pokemon->getPrix()) {
+            return $this->redirectToRoute('home');
+        }
+
         $seller = $this->getDoctrine()->getRepository(Dresseur::class)->findBy(array('id' => $pokemon->getIddresseur()->getId()));
         $seller[0]->setMoney($seller[0]->getMoney() + $pokemon->getPrix());
         $this->getUser()->setMoney($this->getUser()->getMoney() - $pokemon->getPrix());
@@ -186,6 +226,15 @@ class PokemonController extends AbstractController
      */
     public function delete(Request $request, Pokemon $pokemon): Response
     {
+        if ($this->getUser()->getId() != $pokemon->getIddresseur()->getId()) {
+            $admin = false;
+            foreach ($this->getUser()->getRoles() as $role)
+                if ($role == "ROLE_ADMIN")
+                    $admin = true;
+            if (!$admin)
+                return $this->redirectToRoute('home');
+        }
+
         if ($this->isCsrfTokenValid('delete'.$pokemon->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($pokemon);
