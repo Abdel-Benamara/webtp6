@@ -1,12 +1,69 @@
+<style>
+    ul {
+        width: 100%;
+        margin: 40px auto;
+        text-align: center;
+        font-size: 35px;
+
+    }
+    ul li{
+        list-style:none;
+        display: inline;
+        padding:15px;
+    }
+    a{
+        color: #15F3CF;
+        text-decoration:none;
+        position:relative;
+        padding:6px 0;
+        -webkit-transition: all 0.8s;
+        -o-transition: all 0.8s;
+        transition: all 0.8s;
+    }
+    a:after{
+        content:'';
+        width:0%;
+        margin-left:50%;
+        height:2px;
+        bottom:0;
+        left:0;
+        -webkit-border-radius: 40%;
+        -moz-border-radius: 40%;
+        border-radius:40%;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition:all 0.5s;
+        position:absolute;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition:all 0.5s;
+        text-decoration:none;
+    }
+    a:hover:after {
+        background-color: #15F3CF;
+        width:60%;
+        margin-left:20%;
+        -moz-box-shadow: 0px 0px 10px #22A9E8;
+        -webkit-box-shadow: 0px 0px 10px #22A9E8;
+        -o-box-shadow: 0px 0px 10px #22A9E8;
+        box-shadow:0px 0px 10px #22A9E8;
+        text-decoration:none;
+    }
+</style>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>TP 6 : Le Pokegame avec Symfony</title>
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" rel="alternate stylesheet" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
 </head>
-<body>
-<h1>Le Pokegame</h1>
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg" style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;">
+</br>
+</br>
 {% if app.user %}
     <ul>
         <li><a href="{{ path('home') }}">Home</a></li>
@@ -34,5 +91,6 @@
         </div>
     {% endif %}
 </footer>
+
 </body>
 </html>
